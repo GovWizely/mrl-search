@@ -1,0 +1,30 @@
+<form {{action "search" q page on="submit"}}>
+  <div class="col-md-5">
+    <div class="input-group">
+      {{view Ember.TextField value=q placeholder="Keyword" class="form-control"}}
+      <span class="input-group-btn">
+        <input type="submit" class="btn btn-success" value="Search" />
+      </span>
+    </div>
+  </div>
+  <div class="col-md-2">
+    {{view "select2"
+    placeholder="Select an Industry"
+    content=industryList
+    selection=industriesField
+    optionValuePath="content.value"
+    optionLabelPath="content.label"
+    id="industries"
+    multiple=true}}
+  </div>
+  <div class="col-md-2">
+    {{view "select2"
+    placeholder="Select a Country"
+    content=countryList
+    selection=countriesField
+    optionValuePath="content.value"
+    optionLabelPath="content.label"
+    id="countries"
+    multiple=true}}
+  </div>
+</form>

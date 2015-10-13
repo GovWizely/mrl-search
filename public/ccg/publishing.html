@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Country Commercial Guides</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      
+        <h1>CCG Markdown Publishing</h1>
+
+<p>The goal is to convert 200 Country Commercial Guide PDFs into Markdown format, for better web publishing and to expose content on <a href="http://developer.trade.gov/">developer.trade.gov</a>. Below are some steps to best accomplish this:</p>
+
+<h3>Text:</h3>
+
+<ol>
+<li>Go to <a href="https://cloudconvert.com/pdf-to-doc">Cloud Convert</a> to convert PDF to Doc</li>
+<li>Select Files --> Add from URL</li>
+<li>Paste the PDF URL and Add</li>
+<li>Click Start Conversion</li>
+<li>Download and open Doc file locally</li>
+<li>Copy and paste all text into this <a href="http://markable.in/editor/">markdown editor</a></li>
+<li>The headings are most important. Please make sure the headings are consistent with the table of contents</li>
+<li>Once complete, go to Export --> Download Markdown</li>
+</ol>
+
+
+<h3>Images:</h3>
+
+<ul>
+<li>Take screenshots of the images from the PDFs and convert to .png format</li>
+<li>Use these <a href="https://drive.google.com/drive/u/1/#folders/0BzuZudIjPPmBZUhjbmtJRzZTTXc/0BzuZudIjPPmBWk0tM0pMdjcyVW8">images</a> for the guides below</li>
+</ul>
+
+
+<h3>Formating:</h3>
+
+<ul>
+<li>Here is a <a href="#cheatsheet">Markdown Cheatsheet</a> to use as a reference</li>
+<li>Use this markdown file as a <a href="https://raw.githubusercontent.com/GovWizely/ccg/gh-pages/_posts/2014-12-15-columbia.md">model</a></li>
+</ul>
+
+
+<h3>Guides to Work On:</h3>
+
+<ul>
+<li><p>China <a href="http://export.gov/china/build/groups/public/@eg_cn/documents/webcontent/eg_cn_025684.pdf">http://export.gov/china/build/groups/public/@eg_cn/documents/webcontent/eg_cn_025684.pdf</a></p></li>
+<li><p>Argentina <a href="http://www.buyusainfo.net/docs/x_9234444.pdf">http://www.buyusainfo.net/docs/x_9234444.pdf</a></p></li>
+<li><p>Panama <a href="http://www.camarapr.org/WebC12/Country-profiles/Country-Commercial-Guide-Panama2012.pdf">http://www.camarapr.org/WebC12/Country-profiles/Country-Commercial-Guide-Panama2012.pdf</a></p></li>
+</ul>
+
+
+<h1><a href="https://drive.google.com/drive/u/1/#folders/0BzuZudIjPPmBZUhjbmtJRzZTTXc">UPLOAD ALL FILES HERE</a></h1>
+
+<h2><a href="#tables"></a></h2>
+
+<h1 id="cheatsheet" style="margin-top:50px;">Markdown Cheatsheet</h1>
+
+
+<p><strong>Headings</strong></p>
+
+<h1>H1</h1>
+
+<pre><code>#
+</code></pre>
+
+<h2>H2</h2>
+
+<pre><code>##
+</code></pre>
+
+<h3>H3</h3>
+
+<pre><code>###
+</code></pre>
+
+<h4>H4</h4>
+
+<pre><code>####
+</code></pre>
+
+<h4>Bold</h4>
+
+<pre><code>**bold**
+</code></pre>
+
+<h4><em>Italic</em></h4>
+
+<pre><code>_Italic_
+</code></pre>
+
+<p><strong>Links</strong></p>
+
+<p><a href="www.google.com">Google</a></p>
+
+<pre><code>[Google](www.google.com)
+</code></pre>
+
+<p><strong>Images</strong></p>
+
+<p><img src="images/uscs.png" alt="Country" /></p>
+
+<pre><code>![Country](images/country.png)
+</code></pre>
+
+<p><strong>Line break</strong></p>
+
+<hr />
+
+<pre><code>---
+</code></pre>
+
+<p><strong>Lists</strong></p>
+
+<ul>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+
+
+<hr />
+
+<ol>
+<li></li>
+<li></li>
+<li></li>
+</ol>
+
+
+<h3 id="tables" >Tables</h3>
+
+
+<table>
+<thead>
+<tr>
+<th> Tables        </th>
+<th style="text-align:center;"> Are Cool      </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> col 2 is      </td>
+<td style="text-align:center;"> right-aligned </td>
+</tr>
+<tr>
+<td> col 1 is      </td>
+<td style="text-align:center;"> left-aligned  </td>
+</tr>
+<tr>
+<td> zebra stripes </td>
+<td style="text-align:center;"> are neat      </td>
+</tr>
+</tbody>
+</table>
+
+
+<pre><code>    | Tables        | Are Cool      |
+    | ------------- |:-------------:| 
+    | col 2 is      | right-aligned | 
+    | col 1 is      | left-aligned  | 
+    | zebra stripes | are neat      |
+</code></pre>
+
+    </div>
+     
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>

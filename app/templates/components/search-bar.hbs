@@ -1,0 +1,47 @@
+<div class="col-xs-12 col-sm-6 col-lg-8" style="border-right: 3px solid #EEE;height:300px;">
+  <p class="text-muted">Search by Keyword </p>
+  <form {{action "search" q page on="submit"}}>
+  <div class="input-group col-md-10">
+    {{view Ember.TextField value=q placeholder="Keyword" class="form-control input-lg"}}
+    <span class="input-group-btn">
+      <input type="submit" class="btn btn-success btn-lg" value="Search" />
+    </span>
+  </div>
+  </form>
+</div>
+
+
+<div class="col-xs-6 col-lg-4">
+  <p class="text-muted">Search by Category</p>
+  <form class="pure-form pure-form-stacked search" {{action "search" on="submit"}}>
+    <fieldset>
+      <div class="industries">
+        <label for="industries">Industry</label>
+        {{view "select2"
+        placeholder="Select an Industry"
+        content=industryList
+        selection=industriesField
+        optionValuePath="content.value"
+        optionLabelPath="content.label"
+        id="industries"
+        class="pure-input-1"
+        multiple=true}}
+      </div>
+      <span>And</span>
+      <div class="industries">
+        <label for="countries">Country</label>
+        {{view "select2"
+        placeholder="Select a Country"
+        content=countryList
+        selection=countriesField
+        optionValuePath="content.value"
+        optionLabelPath="content.label"
+        id="countries"
+        class="pure-input-1"
+        multiple=true}}
+      </div>
+      <br />
+      {{input type="submit" value="Search" class="btn btn-primary"}}
+    </fieldset>
+  </form>
+</div>

@@ -1,0 +1,48 @@
+{{#if hasResults}}
+  <div class="col-md-3" style="margin-top:40px;border-right: 1px solid #EEE">
+    <h4 class="text-muted">Filter Results</h4>
+    {{#if hasFacets}}
+      {{#each facet in facets}}
+        <h5>{{industry-link item=facet.name action="searchByIndustry"}}</h5>
+        <ul>
+          {{#each industry in facet.industries}}
+            <li>{{industry-link item=industry action="searchByIndustry"}}</li>
+          {{/each}}
+        </ul>
+      {{/each}}
+    {{else}}
+      <p>None</p>
+    {{/if}}
+
+  </div>
+  <div class="col-md-9" style="margin-top:75px;">
+    <hgroup class="mb20">
+      <h2 class="lead">
+        {{total-results total=total q=q}}
+      </h2>
+    </hgroup>
+    <section class="col-xs-12 col-sm-6 col-md-12">
+      <article class="search-result row">
+        {{#each document in content}}
+          {{search-result action="searchByIndustry" document=document}}
+        {{/each}}
+      </article>
+    </section>
+
+    <div class="pages">
+      {{#each page in pagesInfo}}
+        {{#if page.isCurrent}}
+          <button class="pure-button pure-button-disabled">{{page.text}}</button>
+        {{else}}
+          <button class="pure-button" {{action "search" q countriesField industriesField page.page}}>{{page.text}}</button>
+        {{/if}}
+      {{/each}}
+    </div>
+  </div>
+{{else}}
+  <div class="col-md-12">
+    <h4 class="lead">
+      {{total-results total=total q=q}}
+    </h4>
+  </div>
+{{/if}}

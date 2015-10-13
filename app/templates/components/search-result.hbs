@@ -1,0 +1,401 @@
+<article class="search-result">
+        <h3><a href="{{{unbound document.url}}}" target="_blank">{{{document.searchResultHeader}}}</a></h3>
+        <h4><a href="{{{unbound document.url}}}" target="_blank">{{{unbound document.url}}}</a></h4>
+        <p>{{{document.snippet}}}</p>
+        {{search-result-row-list action="searchByIndustry" label="Industries" items=document.industries}}
+</article></br></br>
+{{#if isShowingBody}}
+  {{#with document}}
+    <table class="pure-table pure-table-bordered"> 
+      {{#if id}}
+        {{{id}}}
+        {{~^~}}
+      {{/if}}
+      {{~#if url~}}
+        {{~url}}
+      {{~/if~}}
+      {{#if source}}
+        <tr><td>Source</td><td>{{source}}</td></tr>
+      {{/if}}
+      {{#if start_date}}
+        <tr><td>Start Date</td><td>{{start_date}}</td></tr>
+      {{/if}}
+      {{#if end_date}}
+        <tr><td>End Date</td><td>{{end_date}}</td></tr>
+      {{/if}}
+
+      {{#if entity_number}}
+        <tr><td>Entity Number</td><td>{{entity_number}}</td></tr>
+      {{/if}}
+      {{#if type}}
+      {{type}}
+      {{/if}}
+      {{#if title}}
+        {{{title}}}
+      {{/if}}
+      {{#if federal_register_notice}}
+        <tr><td>Federal Register Notice</td><td>{{federal_register_notice}}</td></tr>
+      {{/if}}
+      {{#if standard_order}}
+        <tr><td>Standard Order</td><td>{{standard_order}}</td></tr>
+      {{/if}}
+      {{#if license_requirement}}
+        <tr><td>License Requirement</td><td>{{license_requirement}}</td></tr>
+      {{/if}}
+      {{#if license_policy}}
+        <tr><td>License Policy</td><td>{{license_policy}}</td></tr>
+      {{/if}}
+      {{#if call_sign}}
+        <tr><td>Call Sign</td><td>{{call_sign}}</td></tr>
+      {{/if}}
+      {{#if vessel_type}}
+        <tr><td>Vessel Type</td><td>{{vessel_type}}</td></tr>
+      {{/if}}
+      {{#if gross_tonnage}}
+        <tr><td>Gross Tonnage</td><td>{{gross_tonnage}}</td></tr>
+      {{/if}}
+      {{#if gross_registered_tonnage}}
+        <tr><td>Gross Registered Tonnage</td><td>{{gross_registered_tonnage}}</td></tr>
+      {{/if}}
+      {{#if vessel_flag}}
+        <tr><td>Vessel Flag</td><td>{{vessel_flag}}</td></tr>
+      {{/if}}
+      {{#if vessel_owner}}
+        <tr><td>Vessel Owner</td><td>{{vessel_owner}}</td></tr>
+      {{/if}}
+      {{#if remarks}}
+        <tr><td>Remarks</td><td>{{remarks}}</td></tr>
+      {{/if}}
+      {{#if source_list_url}}
+        <tr><td>Source List URL</td><td><a href="{{unbound source_list_url}}" target="_blank">{{source_list_url}}</a></td></tr>
+      {{/if}}
+      {{#if source_information_url}}
+        <tr><td>Source Information URL</td><td><a href="{{unbound source_information_url}}" target="_blank">{{source_information_url}}</a></td></tr>
+      {{/if}}
+
+      {{search-result-row-list label="Programs" items=programs}}
+      {{search-result-row-list label="Alternative Names" items=alt_names}}
+      {{search-result-row-list label="Nationalities" items=nationalities}}
+      {{search-result-row-list label="Citizenships" items=citizenships}}
+      {{search-result-row-list label="Dates of Birth" items=dates_of_birth}}
+      {{search-result-row-list label="Places of Birth" items=places_of_birth}}
+
+      {{#if addresses}}
+        <tr><td>Addresses</td><td>
+          <ol>
+          {{#each a in addresses}}
+            <li><ul>
+              {{#if a.address}}
+                <li>{{a.address}}</li>
+              {{/if}}
+              {{#if a.city}}
+                <li>{{a.city}}</li>
+              {{/if}}
+              {{#if a.state}}
+                <li>{{a.state}}</li>
+              {{/if}}
+              {{#if a.postal_code}}
+                <li>{{a.postal_code}}</li>
+              {{/if}}
+              {{#if a.country}}
+                <li>{{a.country}}</li>
+              {{/if}}
+            </ul></li>
+          {{/each}}
+          </ol>
+        </td></tr>
+      {{/if}}
+
+      {{#if identifications}}
+        <tr><td>IDs</td><td>
+          <ol>
+          {{#each id in identifications}}
+            <li><ul>
+              {{#if id.type}}
+                <li>{{id.type}}</li>
+              {{/if}}
+              {{#if id.number}}
+                <li>{{id.number}}</li>
+              {{/if}}
+              {{#if id.country}}
+                <li>{{id.country}}</li>
+              {{/if}}
+              {{#if id.issue_date}}
+                <li>{{id.issue_date}}</li>
+              {{/if}}
+              {{#if id.expiration_date}}
+                <li>{{id.expiration_date}}</li>
+              {{/if}}
+            </ul></li>
+          {{/each}}
+          </ol>
+        </td></tr>
+      {{/if}}
+ 
+      {{#if event_name}}
+        <tr><td>Event Name</td><td>{{event_name}}</td></tr>
+      {{/if}}
+      {{#if event_type}}
+        <tr><td>Event Type</td><td>{{event_type}}</td></tr>
+      {{/if}}
+      {{#if start_time}}
+        <tr><td>Start Time</td><td>{{start_time}}</td></tr>
+      {{/if}}
+      {{#if end_time}}
+        <tr><td>End Time</td><td>{{end_time}}</td></tr>
+      {{/if}}
+      {{#if time_zone}}
+        <tr><td>Time Zone</td><td>{{time_zone}}</td></tr>
+      {{/if}}
+      {{#if cost}}
+        <tr><td>Cost</td><td>{{cost}}</td></tr>
+      {{/if}}
+      {{#if cost_currency}}
+        <tr><td>Cost Currency</td><td>{{cost_currency}}</td></tr>
+      {{/if}}
+      {{#if registration_link}}
+        <tr><td>Registration Link</td><td><a href="{{unbound registration_link}}" target="_blank">{{registration_link}}</a></td></tr>
+      {{/if}}
+      {{#if registration_title}}
+        <tr><td>Registration Title</td><td>{{registration_title}}</td></tr>
+      {{/if}}
+      {{#if description}}
+        <tr><td>Description</td><td>{{description}}</td></tr>
+      {{/if}}
+      {{#if snippet}}
+      {{{snippet}}}
+      {{/if}}
+      {{#if url}}
+        <tr><td>URL</td><td><a href="{{unbound url}}" target="_blank">{{url}}</a></td></tr>
+      {{/if}}
+      {{#if venue}}
+        <tr><td>Venue</td><td>{{venue}}</td></tr>
+      {{/if}}
+      {{#if city}}
+        <tr><td>City</td><td>{{city}}</td></tr>
+      {{/if}}
+      {{#if state}}
+        <tr><td>State</td><td>{{state}}</td></tr>
+      {{/if}}
+      {{#if country}}
+        <tr><td>Country</td><td>{{country}}</td></tr>
+      {{/if}}
+
+      {{search-result-row-list label="Industries" items=industries}}
+
+      {{#if contacts}}
+        <tr><td>Contacts</td><td>
+          <ol>
+          {{#each contact in contacts}}
+            <li><ul>
+              <li>{{contact.first_name}} {{contact.last_name}}</li>
+              {{#if contact.post}}
+                <li>{{contact.post}}</li>
+              {{/if}}
+              {{#if contact.person_title}}
+                <li>{{contact.person_title}}</li>
+              {{/if}}
+              {{#if contact.phone}}
+                <li>{{contact.phone}}</li>
+              {{/if}}
+              {{#if contact.email}}
+                <li>{{contact.email}}</li>
+              {{/if}}
+            </ul></li>
+          {{/each}}
+          </ol>
+        </td></tr>
+      {{/if}}
+
+      {{#if venues}}
+        <tr><td>Venues</td><td>
+          <ol>
+          {{#each venue in venues}}
+            <li><ul>
+              {{#if venue.venue}}
+                <li>{{venue.venue}}</li>
+              {{/if}}
+              {{#if venue.city}}
+                <li>{{venue.city}}</li>
+              {{/if}}
+              {{#if venue.state}}
+                <li>{{venue.state}}</li>
+              {{/if}}
+              {{#if venue.country}}
+                <li>{{venue.country}}</li>
+              {{/if}}
+            </ul></li>
+          {{/each}}
+          </ol>
+        </td></tr>
+      {{/if}}
+
+      {{#if question}}
+        <tr><td>Question</td><td>{{question}}</td></tr>
+      {{/if}}
+       {{#if answer}}
+        <tr><td>Answer</td><td>{{answer}}</td></tr>
+      {{/if}}
+      {{#if update_date}}
+        <tr><td>Update Date</td><td>{{update_date}}</td></tr>
+      {{/if}}
+      {{#if topic}}
+        <tr><td>Topic</td><td>{{topic}}</td></tr>
+      {{/if}}
+      {{#if industry}}
+        <tr><td>Industry</td><td>{{industry}}</td></tr>
+      {{/if}}
+
+      {{#if source_id}}
+          <tr><td>Source id</td><td>{{source_id}}</td></tr>
+      {{/if}}
+      {{#if tariff_line}}
+          <tr><td>Tariff line</td><td>{{tariff_line}}</td></tr>
+      {{/if}}
+      {{#if hs_6}}
+          <tr><td>HS 6</td><td>{{hs_6}}</td></tr>
+      {{/if}}
+      {{#if sector_code}}
+          <tr><td>Sectorcode</td><td>{{sector_code}}</td></tr>
+      {{/if}}
+      {{#if base_rate}}
+          <tr><td>Base rate</td><td>{{base_rate}}</td></tr>
+      {{/if}}
+      {{#if base_rate_alt}}
+          <tr><td>Base rate (alternative)</td><td>{{base_rate_alt}}</td></tr>
+      {{/if}}
+      {{#if final_year}}
+          <tr><td>Final year</td><td>{{final_year}}</td></tr>
+      {{/if}}
+      {{#if tariff_lines_per_6_digit}}
+          <tr><td>Tariff lines per 6 digit</td><td>{{tariff_lines_per_6_digit}}</td></tr>
+      {{/if}}
+      {{#if tariff_rate_quota}}
+          <tr><td>Tariff rate quota</td><td>{{tariff_rate_quota}}</td></tr>
+      {{/if}}
+      {{#if tariff_rate_quota_note}}
+          <tr><td>Tariff rate quota note</td><td>{{tariff_rate_quota_note}}</td></tr>
+      {{/if}}
+      {{#if tariff_eliminated}}
+          <tr><td>Tariff eliminated</td><td>{{tariff_eliminated}}</td></tr>
+      {{/if}}
+      {{#if product_type_id}}
+          <tr><td>Product type id</td><td>{{product_type_id}}</td></tr>
+      {{/if}}
+      {{#if pending_data}}
+          <tr><td>Pending data</td><td>{{pending_data}}</td></tr>
+      {{/if}}
+      {{#if ag_id}}
+          <tr><td>AG id</td><td>{{ag_id}}</td></tr>
+      {{/if}}
+      {{#if partner_name}}
+          <tr><td>Partner name</td><td>{{partner_name}}</td></tr>
+      {{/if}}
+      {{#if reporter_name}}
+          <tr><td>Reporter name</td><td>{{reporter_name}}</td></tr>
+      {{/if}}
+      {{#if staging_basket}}
+          <tr><td>Staging basket</td><td>{{staging_basket}}</td></tr>
+      {{/if}}
+      {{#if staging_basket_id}}
+          <tr><td>Staging basket id</td><td>{{staging_basket_id}}</td></tr>
+      {{/if}}
+      {{#if num_mar_columns}}
+          <tr><td>Number mar columns</td><td>{{num_mar_columns}}</td></tr>
+      {{/if}}
+      {{#if partner_start_year}}
+          <tr><td>Partner start year</td><td>{{partner_start_year}}</td></tr>
+      {{/if}}
+      {{#if reporter_start_year}}
+          <tr><td>Reporter start year</td><td>{{reporter_start_year}}</td></tr>
+      {{/if}}
+      {{#if partner_agreement_name}}
+          <tr><td>Partner agreement name</td><td>{{partner_agreement_name}}</td></tr>
+      {{/if}}
+      {{#if reporter_agreement_name}}
+          <tr><td>Reporter agreement name</td><td>{{reporter_agreement_name}}</td></tr>
+      {{/if}}
+      {{#if partner_agreement_approved}}
+          <tr><td>Partner agreement approved</td><td>{{partner_agreement_approved}}</td></tr>
+      {{/if}}
+      {{#if reporter_agreement_approved}}
+          <tr><td>Reporter agreement approved</td><td>{{reporter_agreement_approved}}</td></tr>
+      {{/if}}
+      {{#if rule_text}}
+          <tr><td>Rule text</td><td>{{rule_text}}</td></tr>
+      {{/if}}
+      {{#if link_text}}
+          <tr><td>Link text</td><td>{{link_text}}</td></tr>
+      {{/if}}
+      {{#if link_url}}
+          <tr><td>Link url</td><td>{{link_url}}</td></tr>
+      {{/if}}
+      {{#if quota_name}}
+          <tr><td>Quota name</td><td>{{quota_name}}</td></tr>
+      {{/if}}
+      {{#if section_title}}
+          <h3>{{section_title}}</h3>
+      {{/if}}
+      {{#if section_url}}
+        <a href="{{unbound section_url}}" target="_blank">{{section_url}}</a>
+      {{/if}}
+
+      {{#if annual_rates}}
+        <tr><td>Annual Rates</td><td>
+          <ul>
+          {{#each ar in annual_rates}}
+            <li>{{ar.year}}: {{ar.value}}</li>
+          {{/each}}
+          </ul>
+        </td></tr>
+      {{/if}}
+      {{#if alt_annual_rates}}
+        <tr><td>Annual Rates (alternative)</td><td>
+          <ul>
+          {{#each ar in alt_annual_rates}}
+            <li>{{ar.year}}: {{ar.value}}</li>
+          {{/each}}
+          </ul>
+        </td></tr>
+      {{/if}}
+
+      {{#if countries}}
+          <tr><td>Countries</td><td>{{countries}}</td></tr>
+      {{/if}}
+      {{#if expiration_date}}
+          <tr><td>Expiration Date</td><td>{{expiration_date}}</td></tr>
+      {{/if}}
+      {{#if industries}}
+          <tr><td>Industries</td><td>{{industries}}</td></tr>
+      {{/if}}
+      {{#if report_type}}
+          <tr><td>Report Type</td><td>{{report_type}}</td></tr>
+      {{/if}}
+
+      {{! ITA Office Locations }}
+      {{#if post}}
+          <tr><td>Post</td><td>{{post}}</td></tr>
+      {{/if}}
+      {{#if office_name}}
+          <tr><td>Office Name</td><td>{{office_name}}</td></tr>
+      {{/if}}
+      {{#if email}}
+          <tr><td>Email</td><td>{{email}}</td></tr>
+      {{/if}}
+      {{#if fax}}
+          <tr><td>Fax</td><td>{{fax}}</td></tr>
+      {{/if}}
+      {{#if mail_instructions}}
+          <tr><td>Mail Instructions</td><td>{{mail_instructions}}</td></tr>
+      {{/if}}
+      {{#if phone}}
+          <tr><td>Phone</td><td>{{phone}}</td></tr>
+      {{/if}}
+      {{#if post_type}}
+          <tr><td>Post Type</td><td>{{post_type}}</td></tr>
+      {{/if}}
+      {{search-result-row-list label="Address" items=address}}
+
+    </table>
+  {{/with}}
+{{/if}}

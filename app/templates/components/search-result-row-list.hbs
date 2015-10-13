@@ -1,0 +1,7 @@
+{{#if items}}
+  <ul>
+    {{#each item in items}}
+      <li>{{industry-link item=item action="searchByIndustry"}}</li>
+    {{/each}}
+  </ul>
+{{/if}}
