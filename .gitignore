@@ -3,6 +3,8 @@
 # compiled output
 /dist
 /tmp
+/public/css/style.css
+/public/fonts
 
 # dependencies
 /node_modules
@@ -14,3 +16,5 @@
 /coverage/*
 /libpeerconnection.log
 npm-debug.log
+
+.DS_Store
