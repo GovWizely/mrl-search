@@ -1,0 +1,52 @@
+{
+  "name": "backbone-explorer",
+  "version": "0.0.0",
+  "description": "Explorer",
+  "main": "main.js",
+  "scripts": {
+    "start": "beefy app/main.js:dist/bundle.js --live",
+    "bundle": "browserify -t reactify app/main.js -o dist/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/GovWizely/backbone-search-app.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GovWizely/backbone-search-app/issues"
+  },
+  "homepage": "https://github.com/GovWizely/backbone-search-app#readme",
+  "dependencies": {
+    "backbone": "^1.2.3",
+    "backbone-react-component": "git+ssh://git@github.com/magalhas/backbone-react-component.git",
+    "backbone-relational": "^0.10.0",
+    "jquery": "^2.1.4",
+    "lodash": "^3.10.1",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-select": "^0.8.0"
+  },
+  "devDependencies": {
+    "babelify": "^6.4.0",
+    "beefy": "^2.1.5",
+    "browserify": "^11.2.0",
+    "gulp": "^3.9.0",
+    "gulp-bower": "0.0.10",
+    "gulp-notify": "^2.2.0",
+    "gulp-sass": "^2.0.4"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "blacklist": [
+            "regenerator"
+          ]
+        }
+      ],
+      "envify"
+    ]
+  }
+}
