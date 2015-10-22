@@ -1,6 +1,14 @@
-var React = require('react');
+var $        = require('jquery');
+var Backbone = require('backbone');
+var React    = require('react');
 var ReactDOM = require('react-dom');
-var $ = require('jquery');
 
+
+var Router = require('./router');
 var View = require('./components/view');
-ReactDOM.render(<View />, $('#main').get(0));
+
+var router = new Router();
+
+ReactDOM.render(<View router={ router } />, $('#main').get(0));
+
+Backbone.history.start();

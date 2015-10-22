@@ -5,6 +5,9 @@ $font-family-base: 'Lato', sans-serif;
 @import "bower_components/components-font-awesome/scss/font-awesome";
 @import "bower_components/components-font-awesome/scss/font-awesome";
 @import "node_modules/react-select/dist/default";
+@import "./spinner.scss";
+
+$header-color: #32404e;
 
 html {
   position: relative;
@@ -29,13 +32,31 @@ nav.navbar {
 }
 
 .header {
+  @extend h4;
   font-size: 45px;
   font-weight: 700;
-  color: #32404e;
+
+  a {
+    color: $header-color;
+    text-decoration: none;
+    &:hover {
+      color: $header-color;
+    }
+  }
 
   .phase {
     color: #4cae4c;
     font-size: 20px;
+  }
+}
+
+.header-condensed {
+  font-size: 18px;
+  font-weight: 500;
+
+  .phase {
+    font-size: 13px;
+    font-weight: 700;
   }
 }
 
@@ -66,6 +87,7 @@ nav.navbar {
 }
 
 .articles {
+  padding-bottom: 64px;
   .article {
     .title {
       font: 500 normal 1.375em Lato,sans-serif;

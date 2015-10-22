@@ -13,7 +13,7 @@ module.exports = React.createClass({
     };
     var template = '';
     if (this.props.keyword === '') {
-      template = "<%= count %> <%= results %> were found."
+      template = "<%= count %> <%= results %> were found.";
     } else {
       template = "<%= count %> <%= results %> were found for the search for <%= keyword %>.";
     }
