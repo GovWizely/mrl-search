@@ -1,28 +1,35 @@
+var $             = require('jquery');
 var _             = require('lodash');
 var Backbone      = require('backbone');
 var BackboneReact = require('backbone-react-component');
 var React         = require('react');
 
-var Articles      = require('../collections/articles');
-var Industries    = require('../collections/industries');
-var countries     = require('../collections/countries');
-
 var SearchView    = require('./search-view');
 var ResultView    = require('./result-view');
 
+var Articles      = require('../collections/articles');
+
 module.exports = React.createClass({
   transition: function() {
-    console.log(this.props.router.params);
     this.handleCountryChange(this.props.router.params.countries);
     this.handleIndustryChange(this.props.router.params.industries);
     this.setState({
       keyword    : this.props.router.params.q,
       page       : this.props.router.params.page
     });
-    this.state.articles.fetch({
-      data: this.props.router.params,
-      reset: true
-    });
+    var data = {
+      q: this.props.router.params.q
+    };
+    if (this.props.router.params.industries) {
+      data.industries = this.props.router.params.industries;
+    }
+    if (this.props.router.params.countries) {
+      data.countries = this.props.router.params.countries;
+    }
+    if (this.props.router.params.page) {
+      data.offset = this.props.router.params.page * this.state.articles.state.pageSize;
+    }
+    this.state.articles.fetch({ data: data, reset: true });
   },
   componentWillMount : function() {
     this.callback = (function() {
@@ -39,34 +46,31 @@ module.exports = React.createClass({
   getInitialState: function() {
     return {
       keyword: '',
-      page: '',
+      page: 0,
       countries: [],
       industries: [],
       articles: new Articles()
     };
   },
-  handleKeywordChange: function(e) {
-    this.setState({ keyword: e.target.value });
-  },
-  handleKeywordSearch: function(e) {
+  handleSearch: function(e) {
     if (e.type ==='keydown' && e.which !== 13) {
       return;
     }
-    var path = 'search?q=' + encodeURIComponent(this.state.keyword.trim());
+
+    var query = { q: this.state.keyword.trim() };
     if (this.state.countries.length) {
-      path = path.concat('&countries=' + _.map(this.state.countries, function(country) {
-        return encodeURIComponent(country.trim());
-      }).join(','));
+      query.countries = this.state.countries;
     }
     if (this.state.industries.length) {
-      path = path.concat('&industries=' + _.map(this.state.industries, function(industry) {
-        return encodeURIComponent(industry.trim());
-      }).join(','));
+      query.industries = this.state.industries;
     }
     if (this.state.page) {
-      path = path.concat('&page=' + this.state.page);
+      query.page = this.state.page;
     }
-    this.props.router.navigate(path, { trigger: true });
+    this.props.router.navigate("search?" + $.param(query), { trigger: true });
+  },
+  handleKeywordChange: function(e) {
+    this.setState({ keyword: e.target.value });
   },
   handleCountryChange: function(countries, __) {
     if (countries) {
@@ -82,23 +86,19 @@ module.exports = React.createClass({
       this.setState({ industries: [] });
     }
   },
-  handleCategorySearch: function() {
-    this.props.router.navigate("search/" + this.state.keyword, { trigger: true });
-  },
   currentView: function() {
     var props = {
       router: this.props.router,
       keyword: this.state.keyword,
-      onKeywordChange: this.handleKeywordChange,
-      onKeywordSearch: this.handleKeywordSearch,
       countries: this.state.countries,
       industries: this.state.industries,
+      onKeywordChange: this.handleKeywordChange,
       onCountryChange: this.handleCountryChange,
       onIndustryChange: this.handleIndustryChange,
-      onCategorySearch: this.handleCategorySearch
+      onSearch: this.handleSearch
     };
     if(this.props.router.current == "result-view") {
-      return <ResultView {...props} collection={ this.state.articles } />;
+      return <ResultView {...props} articles={ this.state.articles } />;
     }
     return <SearchView {...props} />;
   },

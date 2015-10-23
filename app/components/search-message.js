@@ -5,24 +5,36 @@ var React         = require('react');
 
 module.exports = React.createClass({
   mixins: [Backbone.React.Component.mixin],
-  message: function() {
-    interpolation = {
-      count: this.props.count,
-      results: this.props.count ? 'results' : 'result',
-      keyword: ''
+  keywordString: null,
+  getDefaultProps: function() {
+    return {
+      count: null,
+      keyword: null
     };
-    var template = '';
-    if (this.props.keyword === '') {
-      template = "<%= count %> <%= results %> were found.";
-    } else {
-      template = "<%= count %> <%= results %> were found for the search for <%= keyword %>.";
+  },
+  message: function() {
+    if (this.props.count === null) return null;
+
+    var msg = this.props.count ? 'results' : 'result';
+    msg = msg.concat(' were found');
+
+    if (this.keywordString && !(this.keywordString === '')) {
+      msg = msg.concat(' for the search for');
     }
-    return _.template(template)(interpolation);
+    return msg;
+  },
+  count: function() {
+    return <strong className="text-danger">{ this.props.count }</strong>;
+  },
+  keyword: function() {
+    if (!this.keywordString) return null;
+    return <strong className="text-danger">{ this.keywordString }</strong>;
   },
   render: function() {
+    this.keywordString = _.clone(this.props.keyword);
     return (
       <h6>
-        { this.props.count }
+        { this.count() } { this.message() } { this.keyword() }.
       </h6>
     );
   }

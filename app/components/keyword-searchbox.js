@@ -20,7 +20,7 @@ module.exports = React.createClass({
     }
     return (
       <div className={ containerClass }>
-        <input type="text" className={ inputClass } name="keyword" value={ this.props.keyword } onChange={ this.props.onChange } onKeyDown={ this.props.onSearch } />
+        <input type="text" className={ inputClass } name="keyword" value={ this.props.keyword } onChange={ this.props.onChange } onKeyDown={ this.props.onSearch } placeholder="Keyword" />
         <span className="input-group-btn">
           <button className={ buttonClass } type="button" onClick={ this.props.onSearch }>
             <i className="fa fa-search"></i>

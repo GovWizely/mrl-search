@@ -20,7 +20,7 @@ module.exports = React.createClass({
         <div className="row">
           <div className="col-md-8 keyword-search">
             <p className="text-muted">Search by Keyword</p>
-           <Keyword keyword={ this.props.keyword } onSearch={ this.props.onKeywordSearch } onChange={ this.props.onKeywordChange } />
+           <Keyword keyword={ this.props.keyword } onSearch={ this.props.onSearch } onChange={ this.props.onKeywordChange } />
           </div>
           <div className="col-md-4 category-search">
             <p className="text-muted">Search by Category</p>
