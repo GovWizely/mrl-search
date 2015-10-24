@@ -27,7 +27,7 @@ module.exports = React.createClass({
       data.countries = this.props.router.params.countries;
     }
     if (this.props.router.params.page) {
-      data.offset = this.props.router.params.page * this.state.articles.state.pageSize;
+      data.offset = this.props.router.params.page * this.state.pageSize;
     }
     this.state.articles.fetch({ data: data, reset: true });
   },

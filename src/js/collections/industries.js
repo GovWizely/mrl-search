@@ -1,5 +1,5 @@
 var Backbone = require('backbone');
-var _ = require('lodash');
+var _        = require('lodash');
 
 var Industry = require('../models/industry');
 
@@ -9,7 +9,7 @@ module.exports = Backbone.Collection.extend({
   parse: function(response) {
     return _.map(response.aggregations.industries, function(industry) {
       var x = industry.key.split('/');
-      return new Industry( { name: x[x.length - 1], facet: x[0] } );
+      return new Industry( { name: x[x.length - 1] } );
     });
   },
   initialize: function() {

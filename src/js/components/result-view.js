@@ -65,7 +65,7 @@ module.exports = React.createClass({
             <Filters filters={ this.props.articles.aggregations } onFilter={ this.onFilter }/>
           </div>
           <div className="col-md-9">
-            <Messages count={ this.props.articles.state.totalRecords } keyword={ this.props.router.params.q } />
+            <Messages count={ this.props.articles.metadata.total } keyword={ this.props.router.params.q } />
             <Articles collection={ this.props.articles } />
             <Pagination metadata={ this.props.articles.metadata } router={ this.props.router }/>
           </div>
