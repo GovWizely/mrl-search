@@ -145,6 +145,11 @@ gulp.task('js-build', js.build);
 gulp.task('js-reload', js.reload);
 gulp.task('js-watch', ['browser-sync'], js.watch);
 
+gulp.task('setup', [
+  'bower',
+  'build'
+]);
+
 gulp.task('build', [
   'icon-build',
   'scss-build',

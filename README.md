@@ -1,5 +1,8 @@
 # backbone-search-app
 
-- `npm install`
-- `bower install`
-- `npm start`
+## setting up
+```sh
+  > npm install
+  > gulp setup
+  > gulp watch
+```
