@@ -1,3 +1,5 @@
+var _              = require('lodash');
+var $              = require('jquery');
 var Backbone       = require('backbone');
 var BackboneReact  = require('backbone-react-component');
 var React          = require('react');
@@ -21,11 +23,11 @@ module.exports = React.createClass({
     this.fetchCompleted = function() {
       this.setState({ loading: false });
     }.bind(this);
-    this.props.articles.on('sync', this.fetchCompleted);
+    this.props.articles.on('reset', this.fetchCompleted);
   },
   componentWillUnmount: function() {
     this.props.articles.off('fetch', this.fetchStarted);
-    this.props.articles.off('sync', this.fetchCompleted);
+    this.props.articles.off('reset', this.fetchCompleted);
   },
   getInitialState: function() {
     return {
@@ -41,6 +43,37 @@ module.exports = React.createClass({
       },
       reset: true
     });
+  },
+  pagination: function() {
+    var url = function(i) {
+      var params = _.clone(this.props.router.params);
+      params.page = i;
+      return "#search?" + $.param(params);
+    }.bind(this);
+    return {
+      current : Math.floor(this.props.articles.metadata.offset / this.props.pageSize) + 1,
+      total   : Math.ceil(this.props.articles.metadata.total / this.props.pageSize),
+      size    : this.props.pageSize,
+      range   : 10,
+      url     : url
+    };
+  },
+  result: function() {
+    if (this.state.loading) { return null; }
+
+    return (
+      <div className="row">
+        <div className="col-md-3">
+          <h4 className="text-muted">Advance Options</h4>
+          <Filters filters={ this.props.articles.aggregations } onFilter={ this.onFilter }/>
+        </div>
+        <div className="col-md-9">
+          <Messages count={ this.props.articles.metadata.total } keyword={ this.props.router.params.q } />
+          <Articles collection={ this.props.articles } />
+          <Pagination pagination={ this.pagination() } />
+         </div>
+       </div>
+    );
   },
   render: function() {
     return (
@@ -59,17 +92,7 @@ module.exports = React.createClass({
             <CountrySelect value={ this.props.countries } onChange={ this.props.onCountryChange } />
           </div>
         </div>
-        <div className="row">
-          <div className="col-md-3">
-            <h4 className="text-muted">Advance Options</h4>
-            <Filters filters={ this.props.articles.aggregations } onFilter={ this.onFilter }/>
-          </div>
-          <div className="col-md-9">
-            <Messages count={ this.props.articles.metadata.total } keyword={ this.props.router.params.q } />
-            <Articles collection={ this.props.articles } />
-            <Pagination metadata={ this.props.articles.metadata } router={ this.props.router }/>
-          </div>
-        </div>
+        { this.result() }
       </div>
     );
   }

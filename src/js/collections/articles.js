@@ -36,6 +36,11 @@ module.exports = Backbone.Collection.extend({
     if (!options.data.q) {
       options.data.q = 'And';
     }
+    if (options.data.page) {
+      options.data.offset = (options.data.page - 1) * options.data.pageSize;
+      delete options.data.page;
+      delete options.data.pageSize;
+    }
     return Backbone.Collection.prototype.fetch.call(this, options);
   }
 });

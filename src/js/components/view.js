@@ -27,7 +27,8 @@ module.exports = React.createClass({
       data.countries = this.props.router.params.countries;
     }
     if (this.props.router.params.page) {
-      data.offset = this.props.router.params.page * this.state.pageSize;
+      data.page = this.props.router.params.page;
+      data.pageSize = this.state.pageSize;
     }
     this.state.articles.fetch({ data: data, reset: true });
   },
@@ -46,10 +47,11 @@ module.exports = React.createClass({
   getInitialState: function() {
     return {
       keyword: '',
-      page: 0,
+      page: 1,
       countries: [],
       industries: [],
-      articles: new Articles()
+      articles: new Articles(),
+      pageSize: 10
     };
   },
   handleSearch: function(e) {
@@ -95,7 +97,8 @@ module.exports = React.createClass({
       onKeywordChange: this.handleKeywordChange,
       onCountryChange: this.handleCountryChange,
       onIndustryChange: this.handleIndustryChange,
-      onSearch: this.handleSearch
+      onSearch: this.handleSearch,
+      pageSize: this.state.pageSize
     };
     if(this.props.router.current == "result-view") {
       return <ResultView {...props} articles={ this.state.articles } />;
