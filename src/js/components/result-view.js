@@ -39,6 +39,7 @@ module.exports = React.createClass({
       data: {
         q          : this.props.router.params.q,
         page       : this.props.router.params.page,
+        pageSize   : this.props.pageSize,
         industries : checked.industries.join(',')
       },
       reset: true
