@@ -2,16 +2,8 @@ var Backbone = require('backbone');
 var BackboneReact = require('backbone-react-component');
 var React = require('react');
 
-var SearchMessage = require('./search-message');
-
 module.exports = React.createClass({
   mixins: [Backbone.React.Component.mixin],
-  getInitialState: function() {
-    return {
-      keyword: '',
-      displaySearchMessage: false
-    };
-  },
   createArticle: function(article) {
     return (
       <article className="article" key={ article.id }>
