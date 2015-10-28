@@ -7,13 +7,13 @@ var _           = require('lodash'),
     buffer      = require('vinyl-buffer'),
     sourcemaps  = require('gulp-sourcemaps'),
     sass        = require('gulp-sass'),
-    notify      = require('gulp-notify'),
     bower       = require('gulp-bower'),
     watchify    = require('watchify'),
     uglify      = require('gulp-uglify'),
     babelify    = require('babelify'),
     wiredep     = require('wiredep').stream,
-    browserSync = require('browser-sync');
+    browserSync = require('browser-sync'),
+    history     = require('connect-history-api-fallback');
 
 var config = {
   sourcePath: './src',
@@ -37,7 +37,8 @@ gulp.task('browser-sync', ['build'], function() {
   browserSync({
     baseDir: config.distPath,
     server: {
-      baseDir: config.distPath
+      baseDir: config.distPath,
+      middleware: [history()]
     }
   });
 });
@@ -53,10 +54,9 @@ gulp.task('icon-build', function() {
 });
 
 var scss = {
-  path: config.sourcePath + '/scss',
   build: function() {
     log.init("Building scss");
-    return gulp.src(config.sourcePath + '/scss/*.scss')
+    return gulp.src(config.sourcePath + '/scss/**/*.scss')
       .pipe(
         sass({
           style: 'compressed',
@@ -75,10 +75,7 @@ var scss = {
       .pipe(browserSync.stream());
   },
   watch: function() {
-    return gulp.watch(config.sourcePath + '/scss')
-      .on('change', function(e) {
-        scss.reload();
-      });
+    return gulp.watch(config.sourcePath + '/scss/**/*.scss', scss.build);
   }
 };
 
@@ -158,7 +155,7 @@ gulp.task('build', [
 ]);
 
 gulp.task('watch', [
-  'scss-watch',
   'html-watch',
-  'js-watch'
+  'js-watch',
+  'scss-watch'
 ]);

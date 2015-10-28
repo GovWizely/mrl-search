@@ -1,14 +1,18 @@
-var $        = require('jquery');
-var Backbone = require('backbone');
 var React    = require('react');
 var ReactDOM = require('react-dom');
+var History  = require('history');
+var Router   = require('react-router').Router;
+var Route    = require('react-router').Route;
 
 
-var Router   = require('./js/router');
-var View     = require('./js/components/view');
+var IndexView  = require('./js/components/index-view');
+var ResultView = require('./js/components/result-view');
 
-var router   = new Router();
+const history = History.createHistory();
 
-ReactDOM.render(<View router={ router } />, $('#main').get(0));
-
-Backbone.history.start();
+ReactDOM.render((
+  <Router history={ history }>
+    <Route path="/"       component={ IndexView } />
+    <Route path="/search" component={ ResultView } />
+  </Router>
+), document.getElementById('main'));

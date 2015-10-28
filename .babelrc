@@ -1,0 +1,21 @@
+{
+  "env": {
+    "development": {
+      "extra": {
+        "react-transform": {
+          "transforms": [
+            {
+              "imports": [
+                "react"
+              ],
+              "transform": "livereactload/babel-transform"
+            }
+          ]
+        }
+      },
+      "plugins": [
+        "react-transform"
+      ]
+    }
+  }
+}

@@ -3,7 +3,6 @@ $font-family-base: 'Lato', sans-serif;
 
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap";
 @import "bower_components/components-font-awesome/scss/font-awesome";
-@import "bower_components/components-font-awesome/scss/font-awesome";
 @import "node_modules/react-select/dist/default";
 @import "./spinner.scss";
 
@@ -77,13 +76,16 @@ nav.navbar {
   }
 }
 
-.keyword-search {
+.keyword-input {
   border-right: 1px solid #eee;
   height: 300px;
 }
 
-.category-select {
-  width: 100%;
+.category-input {
+  .Select {
+    margin-top: 12px;
+    margin-bottom: 14px;
+  }
 }
 
 .articles {

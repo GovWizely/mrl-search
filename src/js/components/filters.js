@@ -2,10 +2,13 @@ var $     = require('jquery');
 var _     = require('lodash');
 var React = require('react');
 
+var ArticleActor = require('../actors/article-actor');
+var ArticleStore = require('../stores/article-store');
+
 module.exports = React.createClass({
   getInitialState: function() {
     return {
-      checked: []
+      filters: ArticleStore.getFilters()
     };
   },
   createIndustryFilter: function(list, facet, index) {
@@ -26,21 +29,20 @@ module.exports = React.createClass({
     );
   },
   onFilter: function(e) {
-    var checked = {};
+    var filters = {};
     if (e.target.name === 'industry-filter') {
-      checked.industries = _.map($('#filters input:checked'), function(checked) {
+      filters.industries = _.map($('#filters input:checked'), function(checked) {
         return checked.value;
       });
     }
-    if (!_.isEmpty(checked)) {
-      console.log(checked);
-      this.props.onFilter(checked);
+    if (!_.isEmpty(filters)) {
+      ArticleActor.filter(filters);
     }
   },
   render: function() {
     return (
       <div id="filters" onClick={ this.onFilter }>
-        { this.createList(this.props.filters.industries, this.createIndustryFilter) }
+        { this.createList(this.state.filters.industries, this.createIndustryFilter) }
       </div>
     );
   }
