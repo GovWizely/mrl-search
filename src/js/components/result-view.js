@@ -33,13 +33,12 @@ module.exports = React.createClass({
         <div className="col-md-9">
           <Messages />
           <ArticleList />
-          <Pagination />
+          <Pagination history={ this.history } />
          </div>
        </div>
     );
   },
   render: function() {
-    console.log(this.props);
     return (
       <div>
         <div className="row">

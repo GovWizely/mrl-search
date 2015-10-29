@@ -5,22 +5,30 @@ var request = require('axios');
 var Dispatcher  = require('../dispatcher/dispatcher');
 var ActionTypes = require('../constants/constants').ActionTypes;
 var Store       = require('./store');
-var parser      = require('../utils/aggregation-parser')l
+var parser      = require('../utils/aggregation-parser');
 
 var ENDPOINT = 'https://pluto.kerits.org/v1/articles/search';
 
-var _articles = {},
-    _filters = {},
-    _query = {};
+var _articles     = {},
+    _aggregations = {},
+    _metadata     = {},
+    _query        = {};
+
+var _setMetadata = function(metadata) {
+  _metadata = metadata;
+};
 
 var _setArticles = function(articles) {
   _articles = articles;
 };
 
-var _setFilters = function(filters) {
-  _filters.countries  = filters.countries;
-  _filters.industries = parser.parseAsTree(filters.industries);
-  _filters.topics     = parser.parseAsTree(filters.topics);
+var _setAggregations = function(aggregations) {
+  _aggregations.countries  = _.reduce(aggregations.countries, function(results, country, key) {
+    results[country.key] = country.key;
+    return results;
+  }, {});
+  _aggregations.industries = parser.parseAsTree(aggregations.industries);
+  _aggregations.topics     = parser.parseAsTree(aggregations.topics);
 };
 
 var _setQuery = function(query) {
@@ -34,20 +42,26 @@ var ArticleStore = function(dispatcher) {
 ArticleStore.prototype = assign({}, Store.prototype, {
 
   getArticles: function() {
-    return _articles;
+    return _.clone(_articles);
   },
 
-  getFilters: function() {
-    return _filters;
+  getAggregations: function() {
+    return _.clone(_aggregations);
+  },
+
+  getMetadata: function() {
+    return _.clone(_metadata);
   },
 
   getQuery: function() {
-    return _query;
+    return _.clone(_query);
   },
 
   __onDispatch: function(action) {
     switch(action.type) {
     case ActionTypes.SEARCH:
+      if (_.isEmpty(action.query)) return null;
+
       _setQuery(action.query);
       return request
         .get(ENDPOINT, {
@@ -55,7 +69,8 @@ ArticleStore.prototype = assign({}, Store.prototype, {
         })
         .then(function(response) {
           _setArticles(response.data.results);
-          _setFilters(response.data.aggregations);
+          _setMetadata(response.data.metadata);
+          _setAggregations(response.data.aggregations);
 
           this.__emitChange();
         }.bind(this))
@@ -64,12 +79,21 @@ ArticleStore.prototype = assign({}, Store.prototype, {
         });
 
     case ActionTypes.FILTER:
+      var filterParams = _.reduce(action.filters, function(h, value, key) {
+        if (value.length) {
+          h[key] = value.join(',');
+        }
+        return h;
+      }, { offset: 0 });
+
       return request
         .get(ENDPOINT, {
-          params: assign({}, _query, { industries: action.filters.industries })
+          params: assign({}, _query, filterParams)
         })
         .then(function(response) {
           _setArticles(response.data.results);
+          _setMetadata(response.data.metadata);
+
           this.__emitChange();
         }.bind(this))
         .catch(function(response) {
@@ -81,6 +105,8 @@ ArticleStore.prototype = assign({}, Store.prototype, {
         .get(ENDPOINT, { params: assign({}, _query, { offset: 0 })})
         .then(function(response) {
           _setArticles(response.data.results);
+
+          this.__emitChange();
         }.bind(this));
 
     default:

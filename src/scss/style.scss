@@ -88,6 +88,21 @@ nav.navbar {
   }
 }
 
+#filters {
+  border-right: 1px solid #eee;
+  width: 100%;
+  section {
+    width: 95%;
+    height: 280px;
+    border-bottom: 1px solid #eee;
+
+    .overflow {
+      height: 85%;
+      overflow-y: scroll;
+    }
+  }
+}
+
 .articles {
   padding-bottom: 64px;
   .article {

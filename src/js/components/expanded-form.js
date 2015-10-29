@@ -1,8 +1,8 @@
-var React          = require('react');
-var Link     = require('react-router').Link;
-var Header         = require('./header');
-var KeywordInput   = require('./keyword-input');
-var Select  = require('./aggregation-select');
+var React = require('react');
+
+var Header       = require('./header');
+var KeywordInput = require('./keyword-input');
+var Select       = require('./aggregation-select');
 
 module.exports = React.createClass({
   render: function() {

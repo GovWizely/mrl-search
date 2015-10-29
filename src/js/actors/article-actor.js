@@ -3,7 +3,6 @@ var ActionTypes  = require('../constants/constants').ActionTypes;
 
 module.exports = {
   search: function(query) {
-    console.log('search');
     Dispatcher.dispatch({
       type:  ActionTypes.SEARCH,
       query: query
@@ -17,11 +16,10 @@ module.exports = {
     });
   },
 
-  paging: function(page, pageSize) {
+  paging: function(offset) {
     Dispatcher.dispatch({
       type:     ActionTypes.PAGING,
-      page:     page,
-      pageSize: pageSize
+      offset:   offset
     });
   }
 };

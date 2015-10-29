@@ -13,6 +13,6 @@ const history = History.createHistory();
 ReactDOM.render((
   <Router history={ history }>
     <Route path="/"       component={ IndexView } />
-    <Route path="/search" component={ ResultView } />
+    <Route path="search" component={ ResultView } />
   </Router>
 ), document.getElementById('main'));

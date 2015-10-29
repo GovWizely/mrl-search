@@ -16,10 +16,10 @@ module.exports = React.createClass({
   },
   getInitialState: function() {
     return {
-      keyword      : ArticleStore.getQuery.q          || '',
-      countries    : ArticleStore.getQuery.countries  || '',
-      industries   : ArticleStore.getQuery.industries || '',
-      topics       : ArticleStore.getQuery.topics     || '',
+      keyword      : ArticleStore.getQuery().q          || '',
+      countries    : ArticleStore.getQuery().countries  || '',
+      industries   : ArticleStore.getQuery().industries || '',
+      topics       : ArticleStore.getQuery().topics     || '',
       aggregations : {}
     };
   },
@@ -41,11 +41,14 @@ module.exports = React.createClass({
   handleKeywordChange: function(e) {
     this.setState({ keyword: e.target.value });
   },
+  handleCountryChange: function(values) {
+    this.setState({ countries: values });
+  },
   handleIndustryChange: function(values) {
     this.setState({ industries: values });
   },
-  handleCountryChange: function(values) {
-    this.setState({ countries: values });
+  handleTopicChange: function(values) {
+    this.setState({ topics: values });
   },
   view: function() {
     var props = {

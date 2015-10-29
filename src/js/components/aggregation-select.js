@@ -7,6 +7,7 @@ var Store = require('../stores/aggregation-store');
 module.exports = React.createClass({
   getDefaultProps: function() {
     return {
+      items: [],
       type: null,
       placeholder: "Select Options"
     };
@@ -21,6 +22,15 @@ module.exports = React.createClass({
     if (!_.isEmpty(nextProps.items)) {
       this.setState({ isLoading: false });
     }
+  },
+  shouldComponentUpdate: function(nextProps, nextState) {
+    if (nextState.values !== this.state.values) {
+      return true;
+    }
+    if (nextProps.items !== this.props.items) {
+      return true;
+    }
+    return false;
   },
   onChange: function(values, __) {
     if (values) {
