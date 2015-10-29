@@ -8,11 +8,11 @@ var Route    = require('react-router').Route;
 var IndexView  = require('./js/components/index-view');
 var ResultView = require('./js/components/result-view');
 
-const history = History.createHistory();
+const history = History.createHashHistory();
 
 ReactDOM.render((
   <Router history={ history }>
-    <Route path="/"       component={ IndexView } />
+    <Route path="/" component={ IndexView } />
     <Route path="search" component={ ResultView } />
   </Router>
 ), document.getElementById('main'));

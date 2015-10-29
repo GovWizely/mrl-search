@@ -2,6 +2,7 @@ var _           = require('lodash'),
     del         = require('del'),
     gulp        = require('gulp'),
     gulpUtil    = require('gulp-util'),
+    ghPages     = require('gulp-gh-pages'),
     browserify  = require('browserify'),
     source      = require('vinyl-source-stream'),
     buffer      = require('vinyl-buffer'),
@@ -32,6 +33,11 @@ var log = {
     gulpUtil.colors.green('[✔] ' + message);
   }
 };
+
+gulp.task('deploy', function() {
+  return gulp.src('./dist/**/*')
+    .pipe(ghPages());
+});
 
 gulp.task('browser-sync', ['build'], function() {
   browserSync({
