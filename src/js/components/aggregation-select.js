@@ -15,22 +15,13 @@ module.exports = React.createClass({
   getInitialState: function() {
     return {
       values: [],
-      isLoading: true
+      isLoading: _.isEmpty(this.props.items)
     };
   },
   componentWillReceiveProps: function(nextProps) {
     if (!_.isEmpty(nextProps.items)) {
       this.setState({ isLoading: false });
     }
-  },
-  shouldComponentUpdate: function(nextProps, nextState) {
-    if (nextState.values !== this.state.values) {
-      return true;
-    }
-    if (nextProps.items !== this.props.items) {
-      return true;
-    }
-    return false;
   },
   onChange: function(values, __) {
     if (values) {

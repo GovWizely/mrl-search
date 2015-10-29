@@ -9,9 +9,7 @@ var Route         = require('react-router').Route;
 var IndexView  = require('./js/components/index-view');
 var ResultView = require('./js/components/result-view');
 
-const history = useBasename(createHistory)({
-  basename: "/backbone-search-app"
-});
+const history = createHistory();
 
 const routes = [
   { path: "/", component: IndexView },
