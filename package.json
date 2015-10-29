@@ -39,6 +39,7 @@
     "browserify": "^11.2.0",
     "connect-history-api-fallback": "^1.1.0",
     "del": "^2.0.2",
+    "envify": "^3.4.0",
     "gulp": "^3.9.0",
     "gulp-bower": "0.0.10",
     "gulp-gh-pages": "^0.5.4",

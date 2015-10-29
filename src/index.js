@@ -1,18 +1,23 @@
-var React    = require('react');
-var ReactDOM = require('react-dom');
-var History  = require('history');
-var Router   = require('react-router').Router;
-var Route    = require('react-router').Route;
+var React         = require('react');
+var ReactDOM      = require('react-dom');
+var useBasename   = require('history').useBasename;
+var createHistory = require('history').createHistory;
+var Router        = require('react-router').Router;
+var Route         = require('react-router').Route;
 
 
 var IndexView  = require('./js/components/index-view');
 var ResultView = require('./js/components/result-view');
 
-const history = History.createHashHistory();
+const history = useBasename(createHistory)({
+  basename: "/backbone-search-app"
+});
+
+const routes = [
+  { path: "/", component: IndexView },
+  { path: "/search", component: ResultView }
+];
 
 ReactDOM.render((
-  <Router history={ history }>
-    <Route path="/" component={ IndexView } />
-    <Route path="search" component={ ResultView } />
-  </Router>
+  <Router history={ history } routes={ routes } />
 ), document.getElementById('main'));
