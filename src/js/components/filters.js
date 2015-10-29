@@ -23,7 +23,7 @@ module.exports = React.createClass({
   createNestedFilterOption: function(list, name, item, index) {
     return (
       <li className="list-group-item checkbox" key={ item }>
-        <label><input name={ name } type="checkbox" value={ item } />{ item }</label>
+        <label><input onChange={ this.onFilter }name={ name } type="checkbox" value={ item } />{ item }</label>
         { this.createFilterList(list[item], name, this.createNestedFilterOption) }
       </li>
     );
@@ -31,7 +31,7 @@ module.exports = React.createClass({
   createFilterOption: function(list, name, item, index) {
     return (
       <li className="list-group-item checkbox" key={ item }>
-        <label><input name={ name } type="checkbox" value={ item } />{ item }</label>
+        <label><input onChange={ this.onFilter } name={ name } type="checkbox" value={ item } />{ item }</label>
       </li>
     );
   },
@@ -44,30 +44,29 @@ module.exports = React.createClass({
     );
   },
   onFilter: function(e) {
-    var filters = {};
-    if (e.target.name === 'country-filter') {
-      filters.countries = _.map($('#filters input:checked'), function(checked) {
-        return checked.value;
-      });
-    }
-    if (e.target.name === 'industry-filter') {
-      filters.industries = _.map($('#filters input:checked'), function(checked) {
-        return checked.value;
-      });
-    }
-    if (e.target.name === 'topic-filter') {
-      filters.topics = _.map($('#filters input:checked'), function(checked) {
-        return checked.value;
-      });
-    }
+    var filters = _.reduce($('#filters input:checked'), function(results, checked, __) {
+      switch(checked.name) {
+      case 'country-filter':
+        results.countries.push(checked.value);
+        break;
 
-    if (!_.isEmpty(filters)) {
-      ArticleActor.filter(filters);
-    }
+      case 'industry-filter':
+        results.industries.push(checked.value);
+        break;
+
+      case 'topic-filter':
+        results.topics.push(checked.value);
+        break;
+      }
+
+      return results;
+    }, { countries: [], industries: [], topics: [] });
+
+    ArticleActor.filter(filters);
   },
   render: function() {
     return (
-      <div id="filters" onClick={ this.onFilter }>
+      <div id="filters">
         <section>
         <h5>Country</h5>
         <div className="overflow">

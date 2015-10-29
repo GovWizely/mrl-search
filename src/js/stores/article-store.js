@@ -85,7 +85,7 @@ ArticleStore.prototype = assign({}, Store.prototype, {
         }
         return h;
       }, { offset: 0 });
-
+      console.log(filterParams);
       return request
         .get(ENDPOINT, {
           params: assign({}, _query, filterParams)
@@ -93,7 +93,8 @@ ArticleStore.prototype = assign({}, Store.prototype, {
         .then(function(response) {
           _setArticles(response.data.results);
           _setMetadata(response.data.metadata);
-
+          console.log(action.filters);
+          console.log(response.data.results);
           this.__emitChange();
         }.bind(this))
         .catch(function(response) {

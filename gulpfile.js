@@ -53,6 +53,11 @@ gulp.task('icon-build', function() {
     .pipe(gulp.dest(config.distPath + '/fonts'));
 });
 
+gulp.task('image-build', function() {
+  return gulp.src(config.sourcePath + '/images/**/*')
+    .pipe(gulp.dest(config.distPath + '/images'));
+});
+
 var scss = {
   build: function() {
     log.init("Building scss");
@@ -149,6 +154,7 @@ gulp.task('setup', [
 
 gulp.task('build', [
   'icon-build',
+  'image-build',
   'scss-build',
   'html-build',
   'js-build'
