@@ -1,0 +1,82 @@
+{
+  "name": "backbone-explorer",
+  "version": "0.0.0",
+  "description": "Explorer",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/GovWizely/backbone-search-app.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GovWizely/backbone-search-app/issues"
+  },
+  "homepage": "https://github.com/GovWizely/backbone-search-app#readme",
+  "dependencies": {
+    "axios": "^0.7.0",
+    "backbone": "^1.2.3",
+    "backbone-react-component": "git+ssh://git@github.com/magalhas/backbone-react-component.git",
+    "es6-promise": "^3.0.2",
+    "flux": "^2.1.1",
+    "history": "^1.12.6",
+    "jquery": "^2.1.4",
+    "keymirror": "^0.1.1",
+    "lodash": "^3.10.1",
+    "object-assign": "^4.0.1",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-router": "^1.0.0-rc3",
+    "react-select": "^0.8.0",
+    "superagent": "^1.4.0",
+    "superagent-bluebird-promise": "^2.1.0"
+  },
+  "devDependencies": {
+    "babel-jest": "^5.3.0",
+    "babel-plugin-react-transform": "^1.1.1",
+    "babelify": "^6.4.0",
+    "browser-sync": "^2.9.11",
+    "browserify": "^11.2.0",
+    "connect-history-api-fallback": "^1.1.0",
+    "del": "^2.0.2",
+    "envify": "^3.4.0",
+    "gulp": "^3.9.0",
+    "gulp-bower": "0.0.10",
+    "gulp-gh-pages": "^0.5.4",
+    "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.4.2",
+    "gulp-util": "^3.0.7",
+    "immutable": "^3.7.5",
+    "jest-cli": "^0.6.1",
+    "livereactload": "^2.0.5",
+    "react-addons-test-utils": "^0.14.0",
+    "react-proxy": "^1.1.1",
+    "uglify-js": "^2.5.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.4.0",
+    "wiredep": "^2.2.2"
+  },
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "testFileExtensions": [
+      "es6",
+      "js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "es6"
+    ],
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/react-dom",
+      "<rootDir>/node_modules/react-addons-test-utils",
+      "<rootDir>/node_modules/fbjs"
+    ]
+  }
+}
