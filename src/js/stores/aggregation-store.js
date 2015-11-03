@@ -14,9 +14,6 @@ var _setters = {
   },
   industries: function(aggregations) {
     _aggregations.industries = parser.parse(aggregations.industries);
-  },
-  topics: function(aggregations) {
-    _aggregations.topics = parser.parse(aggregations.topics);
   }
 };
 

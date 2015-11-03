@@ -2,7 +2,8 @@ var React = require('react');
 
 var Header       = require('./header');
 var KeywordInput = require('./keyword-input');
-var Select       = require('./aggregation-select');
+var CountrySelect       = require('./country-select');
+var IndustrySelect = require('./industry-select')
 
 module.exports = React.createClass({
   render: function() {
@@ -20,12 +21,12 @@ module.exports = React.createClass({
 
           <div className="col-md-4 category-input">
             <p className="text-muted">Search by Category</p>
-            <Select type="countries"  onChange={ this.props.onCountryChange }  placeholder="Select Country" items={ this.props.aggregations.countries } />
-            <Select type="industries" onChange={ this.props.onIndustryChange } placeholder="Select Industry" items={ this.props.aggregations.industries } />
-            <Select type="topics"     onChange={ this.props.onTopicChange }    placeholder="Select Topic" items={ this.props.aggregations.topics } />
+            <CountrySelect onChange={ this.props.onCountryChange }  placeholder="Select Country" items={ this.props.countries } />
+            <IndustrySelect onChange={ this.props.onIndustryChange } placeholder="Select Industry" items={ this.props.industries } />
           </div>
+
         </div>
       </div>
     );
   }
-})
+});

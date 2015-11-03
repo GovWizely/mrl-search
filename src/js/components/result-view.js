@@ -3,7 +3,6 @@ var React   = require('react');
 var History = require('react-router').History;
 
 var Form         = require('./form');
-var Filters      = require('./filters');
 var ArticleList  = require('./article-list');
 var Messages     = require('./search-message');
 var Pagination   = require('./pagination');
@@ -26,10 +25,6 @@ module.exports = React.createClass({
   result: function() {
     return (
       <div className="row">
-        <div className="col-md-3">
-          <h4 className="text-muted">Advance Options</h4>
-          <Filters />
-        </div>
         <div className="col-md-9">
           <Messages />
           <ArticleList />

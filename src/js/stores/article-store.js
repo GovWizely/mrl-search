@@ -5,17 +5,17 @@ var request = require('axios');
 var Dispatcher  = require('../dispatcher/dispatcher');
 var ActionTypes = require('../constants/constants').ActionTypes;
 var Store       = require('./store');
-var parser      = require('../utils/aggregation-parser');
+//var parser      = require('../utils/aggregation-parser');
 
-var ENDPOINT = 'https://pluto.kerits.org/v1/articles/search';
+var ENDPOINT = 'https://api.govwizely.com/market_research_library/search?api_key=0ooVzDG3pxt0azCL9uUBMYLS';
 
 var _articles     = {},
     _aggregations = {},
     _metadata     = {},
     _query        = {};
 
-var _setMetadata = function(metadata) {
-  _metadata = metadata;
+var _setMetadata = function(_total, _offset) {
+  _metadata = {total:_total, offset:_offset};
 };
 
 var _setArticles = function(articles) {
@@ -28,7 +28,6 @@ var _setAggregations = function(aggregations) {
     return results;
   }, {});
   _aggregations.industries = parser.parseAsTree(aggregations.industries);
-  _aggregations.topics     = parser.parseAsTree(aggregations.topics);
 };
 
 var _setQuery = function(query) {
@@ -69,30 +68,8 @@ ArticleStore.prototype = assign({}, Store.prototype, {
         })
         .then(function(response) {
           _setArticles(response.data.results);
-          _setMetadata(response.data.metadata);
-          _setAggregations(response.data.aggregations);
-
-          this.__emitChange();
-        }.bind(this))
-        .catch(function(response) {
-          console.log(response);
-        });
-
-    case ActionTypes.FILTER:
-      var filterParams = _.reduce(action.filters, function(h, value, key) {
-        if (value.length) {
-          h[key] = value.join(',');
-        }
-        return h;
-      }, { offset: 0 });
-
-      return request
-        .get(ENDPOINT, {
-          params: assign({}, _query, filterParams)
-        })
-        .then(function(response) {
-          _setArticles(response.data.results);
-          _setMetadata(response.data.metadata);
+          _setMetadata(response.data.total, response.data.offset);
+          //_setAggregations(response.data.aggregations);
 
           this.__emitChange();
         }.bind(this))

@@ -1,26 +1,53 @@
-var _       = require('lodash');
-var request = require('axios');
-
-var parser  = require('../utils/industry-parser');
-
-const ENDPOINT = 'https://pluto.kerits.org/v1/articles/count';
-
-var _industries = {};
-var _setIndustries = function(results) {
-  _industries = parser.parseIndustry(results);
-};
+  var _industries = [
+    {label: 'Aerospace and Defense (ITA)', value: 'Aerospace and Defense'},
+    {label: 'Agribusiness (ITA)', value: 'Agribusiness'},
+    {label: 'Automotive (ITA)', value: 'Automotive'},
+    {label: 'Business and Professional Services (ITA)', value: 'Business and Professional Services'},
+    {label: 'Chemicals (ITA)', value: 'Chemicals'},
+    {label: 'Construction (ITA)', value: 'Construction'},
+    {label: 'Consumer Goods (ITA)', value: 'Consumer Goods'},
+    {label: 'Distribution and Logistics (ITA)', value: 'Distribution and Logistics'},
+    {label: 'Education (ITA)', value: 'Education'},
+    {label: 'Energy (ITA)', value: 'Energy'},
+    {label: 'Environmental Technology (ITA)', value: 'Environmental Technology'},
+    {label: 'Equipment and Machinery (ITA)', value: 'Equipment and Machinery'},
+    {label: 'Financial Services (ITA)', value: 'Financial Services'},
+    {label: 'Food and Beverage (ITA)', value: 'Food and Beverage'},
+    {label: 'Franchising (ITA)', value: 'Franchising'},
+    {label: 'Healthcare (ITA)', value: 'Healthcare'},
+    {label: 'Industrial Materials (ITA)', value: 'Industrial Materials'},
+    {label: 'Information and Communication Technology (ITA)', value: 'Information and Communication Technology'},
+    {label: 'Marine Technology (ITA)', value: 'Marine Technology'},
+    {label: 'Media and Entertainment (ITA)', value: 'Media and Entertainment'},
+    {label: 'Non-Profits and Associations (ITA)', value: 'Non-Profits and Associations'},
+    {label: 'Public Sector (ITA)', value: 'Public Sector'},
+    {label: 'Retail Trade (ITA)', value: 'Retail Trade'},
+    {label: 'Safety and Security (ITA)', value: 'Safety and Security'},
+    {label: 'Textiles and Apparel (ITA)', value: 'Textiles and Apparel'},
+    {label: 'Travel and Tourism (ITA)', value: 'Travel and Tourism'},
+    {label: 'Wholesale Trade (ITA)', value: 'Wholesale Trade'},
+    {label: 'Aerospace & Defense', value: 'Aerospace & Defense'},
+    {label: 'Agribusiness', value: 'Agribusiness'},
+    {label: 'Apparel & Textiles', value: 'Apparel & Textiles'},
+    {label: 'Automotive & Ground Transportation', value: 'Automotive & Ground Transportation'},
+    {label: 'Chemicals, Petrochemicals & Composites', value: 'Chemicals, Petrochemicals & Composites'},
+    {label: 'Construction, Building & Heavy Equipment', value: 'Construction, Building & Heavy Equipment'},
+    {label: 'Consumer Goods & Home Furnishings', value: 'Consumer Goods & Home Furnishings'},
+    {label: 'Energy & Mining', value: 'Energy & Mining'},
+    {label: 'Environmental Technologies', value: 'Environmental Technologies'},
+    {label: 'Food Processing & Packaging', value: 'Food Processing & Packaging'},
+    {label: 'Health Technologies', value: 'Health Technologies'},
+    {label: 'Industrial Equipment & Supplies', value: 'Industrial Equipment & Supplies'},
+    {label: 'Information & Communication', value: 'Information & Communication'},
+    {label: 'Marine Industries', value: 'Marine Industries'},
+    {label: 'Paper, Printing, Graphic Arts', value: 'Paper, Printing, Graphic Arts'},
+    {label: 'Security & Safety', value: 'Security & Safety'},
+    {label: 'Services', value: 'Services'},
+    {label: 'Used & Reconditioned Equipment', value: 'Used & Reconditioned Equipment'}
+  ];
 
 module.exports = {
   getIndustries: function(callback) {
-    if (_.isEmpty(_industries)) {
-      request
-        .get(ENDPOINT)
-        .then(function(response) {
-          _setIndustries(response.data.aggregations.industries);
-          callback(_industries);
-        });
-    } else {
-      callback(_industries);
-    }
+    callback(_industries);
   }
 };

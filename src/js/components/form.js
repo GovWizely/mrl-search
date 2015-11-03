@@ -18,22 +18,21 @@ module.exports = React.createClass({
     return {
       keyword      : ArticleStore.getQuery().q          || '',
       countries    : ArticleStore.getQuery().countries  || '',
-      industries   : ArticleStore.getQuery().industries || '',
-      topics       : ArticleStore.getQuery().topics     || '',
-      aggregations : {}
+      industries   : ArticleStore.getQuery().industries || ''
+      //topics       : ArticleStore.getQuery().topics     || '',
+      //aggregations : {}
     };
   },
-  componentWillMount: function() {
-    AggregationStore.getAll(function(aggregations) {
-      this.setState({ aggregations: aggregations });
-    }.bind(this));
-  },
+  //componentWillMount: function() {
+  //  AggregationStore.getAll(function(aggregations) {
+  //    this.setState({ aggregations: aggregations });
+  //  }.bind(this));
+  //},
   handleSubmit: function(e) {
     var query = _.pick({
       q: this.state.keyword,
       countries: this.state.countries,
       industries: this.state.industries,
-      topics: this.state.topics
     }, _.identity);
 
     this.props.history.pushState(
@@ -48,16 +47,16 @@ module.exports = React.createClass({
   handleIndustryChange: function(values) {
     this.setState({ industries: values });
   },
-  handleTopicChange: function(values) {
-    this.setState({ topics: values });
-  },
+  //handleTopicChange: function(values) {
+  //  this.setState({ topics: values });
+  //},
   view: function() {
     var props = {
       keyword          : this.state.keyword,
       countries        : this.state.countries,
       industries       : this.state.industries,
-      topics           : this.state.topics,
-      aggregations     : this.state.aggregations,
+      //topics           : this.state.topics,
+      //aggregations     : this.state.aggregations,
       onKeywordChange  : this.handleKeywordChange,
       onCountryChange  : this.handleCountryChange,
       onIndustryChange : this.handleIndustryChange,

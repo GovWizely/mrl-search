@@ -1,7 +1,7 @@
 var _      = require('lodash');
 var React  = require('react');
 var Select = require('react-select');
-var Store  = require('../stores/aggregation-store');
+var IndustryStore  = require('../stores/industry-store');
 
 module.exports = React.createClass({
   getInitialState: function() {
@@ -12,8 +12,8 @@ module.exports = React.createClass({
     };
   },
   componentWillMount: function() {
-    Store.get('industries', function(industries) {
-      this.setState({ industries: _.map(industries, function(industry) { return industry.key; }) });
+    IndustryStore.getIndustries(function(industries) {
+      this.setState({ industries: industries });
       this.setState({ isLoading : false });
     }.bind(this));
   },
@@ -28,10 +28,7 @@ module.exports = React.createClass({
     }
   },
   options: function() {
-    if (!this.state.industries) return null;
-    return this.state.industries.map(function(industry) {
-      return { label: industry, value: industry };
-    });
+    return this.state.industries;
   },
   render: function() {
     return (

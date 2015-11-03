@@ -9,12 +9,12 @@ module.exports = {
     });
   },
 
-  filter: function(filters) {
-    Dispatcher.dispatch({
-      type:    ActionTypes.FILTER,
-      filters: filters
-    });
-  },
+  //filter: function(filters) {
+  //  Dispatcher.dispatch({
+  //    type:    ActionTypes.FILTER,
+  //    filters: filters
+  //  });
+  //},
 
   paging: function(offset) {
     Dispatcher.dispatch({
