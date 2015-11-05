@@ -11,36 +11,424 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
   </head>
   <body>
-    <nav class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <div class="nav-header">
-          <a class="navbar-brand" href="#">
-            <img src="images/logo.png" alt="Logo" width="200" />
-          </a>
+    <body class="front no-trans">
+    <!-- scrollToTop -->
+    <!-- ================ -->
+    <div class="scrollToTop"><i class="fa fa-chevron-up fa-6"></i></div>
+
+    <!-- page wrapper start -->
+    <!-- ================ -->
+    <div class="page-wrapper">
+
+      <!-- header-top start -->
+      <!-- ================ -->
+      <div class="header-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-2  col-sm-6">
+
+              <!-- header-top-first start -->
+              <!-- ================ -->
+              <div class="header-top-first clearfix">
+                <ul class="social-links clearfix hidden-xs">
+                  <li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
+                  <li class="linkedin"><a target="_blank" href="http://www.linkedin.com"><i class="fa fa-linkedin"></i></a></li>
+                  <li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
+                  <li class="youtube"><a target="_blank" href="http://www.youtube.com"><i class="fa fa-youtube-play"></i></a></li>
+                  <li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+                </ul>
+                <div class="social-links hidden-lg hidden-md hidden-sm">
+                  <div class="btn-group dropdown">
+                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-share-alt"></i></button>
+                    <ul class="dropdown-menu dropdown-animation">
+                      <li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
+                      <li class="linkedin"><a target="_blank" href="http://www.linkedin.com"><i class="fa fa-linkedin"></i></a></li>
+                      <li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
+                      <li class="youtube"><a target="_blank" href="http://www.youtube.com"><i class="fa fa-youtube-play"></i></a></li>
+                      <li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!-- header-top-first end -->
+
+            </div>
+            <div class="col-xs-10 col-sm-6">
+
+              <!-- header-top-second start -->
+              <!-- ================ -->
+              <div id="header-top-second"  class="clearfix">
+
+                <!-- header top dropdowns start -->
+                <!-- ================ -->
+                <div class="header-top-dropdown">
+                  <div class="btn-group dropdown">
+                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" accept-charset="UTF-8" action="http://search.export.gov/search"><i class="fa fa-search"></i> Search</button>
+                    <ul class="dropdown-menu dropdown-menu-right dropdown-animation">
+                      <li>
+                        <form role="search" class="search-box">
+                          <div class="form-group has-feedback">
+                            <input type="text" class="form-control" placeholder="Enter search text">
+                            <i class="fa fa-search form-control-feedback"></i>
+                          </div>
+                        </form>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="btn-group dropdown">
+                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Login</button>
+                    <!--<ul class="dropdown-menu dropdown-menu-right dropdown-animation">
+                      <li>
+                        <form class="login-form">
+                          <div class="form-group has-feedback">
+                            <label class="control-label">Username</label>
+                            <input type="text" class="form-control" placeholder="">
+                            <i class="fa fa-user form-control-feedback"></i>
+                          </div>
+                          <div class="form-group has-feedback">
+                            <label class="control-label">Password</label>
+                            <input type="password" class="form-control" placeholder="">
+                            <i class="fa fa-lock form-control-feedback"></i>
+                          </div>
+                          <button type="submit" class="btn btn-group btn-dark btn-sm">Log In</button>
+                          <span>or</span>
+                          <button type="submit" class="btn btn-group btn-default btn-sm" >Register</button>
+
+                          <ul>
+                            <li><a href="#" alt="forget your password">Forgot your password?</a></li>
+                          </ul>
+                        </form>
+                      </li>
+                    </ul>-->
+                  </div>
+                  <div class="btn-group dropdown">
+                    <button type="button" class="btn" data-toggle="dropdown" ><i class="fa fa-plus-square"></i>Register</button>
+
+                  </div>
+
+                </div>
+                <!--  header top dropdowns end -->
+
+              </div>
+              <!-- header-top-second end -->
+
+            </div>
+          </div>
         </div>
       </div>
-    </nav>
+      <!-- header-top end -->
+
+      <!-- header start classes:
+      ================ -->
+      <header class="header fixed clearfix">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-2">
+
+              <!-- header-left start -->
+              <!-- ================ -->
+              <div class="header-left clearfix">
+
+                <!-- logo -->
+                <div class="logo" >
+
+                  <a href="home.html"><img id="logo" src="images/eg3-green.png" alt="logo"></a>
+                </div>
+
+                <!-- name-and-slogan -->
+                <div class="site-slogan" >
+                  Helping U.S. Companies Export
+                </div>
+
+              </div>
+              <!-- header-left end -->
+
+            </div>
+            <div class="col-md-10">
+
+              <!-- header-right start -->
+              <!-- ================ -->
+              <div class="header-right clearfix">
+
+                <!-- main-navigation start -->
+                <!-- ================ -->
+                <div class="main-navigation animated">
+
+                  <!-- navbar start -->
+                  <!-- ================ -->
+                  <nav class="navbar navbar-default" role="navigation">
+                    <div class="container-fluid">
+
+                      <!-- Toggle get grouped for better mobile display -->
+                      <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                          <span class="sr-only">Toggle navigation</span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                        </button>
+                      </div>
+
+                      <!-- Collect the nav links, forms, and other content for toggling -->
+                      <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+
+
+
+                          <li class="dropdown">
+                            <a href="export-basics.html" class="dropdown-toggle" data-toggle="dropdown">Export Basics</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="export-planning.html">Export Planning</a></li>
+                              <li><a href="international-sales-marketing.html">International Sales & Marketing</a></li>
+                              <li><a href="selling-online.html">Selling Online</a></li>
+                              <li><a href="find-business-partners.html">Find Business Partners</a></li>
+                              <li><a href="financing-payments.html">Financing & Payments</a></li>
+                              <li><a href="trade-agreements.html">Trade Agreements</a></li>
+                              <li><a href="documentation-shipping.html">Documentation & Shipping</a></li>
+                            </ul>
+                          </li>
+
+                          <li class="dropdown">
+                            <a href="market-intelligence.html" class="dropdown-toggle" data-toggle="dropdown">Market Intelligence</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="market-intelligence-by-industry.html">By Industry</a></li>
+                              <li><a href="market-intelligence-by-country-region.html">By Country and Region</a></li>
+                              <li><a href="trade-opportunities.html">Trade Opportunities</a></li>
+                              <li><a href="http://apps.export.gov/#/articles">Search Market Intelligence</a></li>
+                            </ul>
+                          </li>
+
+
+                          <li class="dropdown">
+                            <a href="laws-regulations.html" class="dropdown-toggle" data-toggle="dropdown">Laws & Regulations</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="safe-harbor.html">Safe Harbor</a></li>
+                              <li><a href="export-regulations.html">Export Regulations</a></li>
+                              <li><a href="foreign-regulations.html">Foreign Regulations</a></li>
+                              <li><a href="intellectual-property-protection.html">Intellectual Property Protection</a></li>
+                            </ul>
+                          </li>
+                          <li class="dropdown">
+                            <a href="trade.barriers.html" class="dropdown-toggle" data-toggle="dropdown">Trade Barriers</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="foreign-anti-dumping-actions.html">Foreign Anti-Dumping Actions</a></li>
+                              <li><a href="foreign-countervailing-duty-actions.html">Foreign Countervailing Duty Actions</a></li>
+                              <li><a href="report-trade-barrier-hotline.html">Report a Trade Barrier Hotline</a></li>
+                              <li><a href="case-studies.html">Case Studies</a></li>
+                            </ul>
+                          </li>
+                          <li class="dropdown">
+                            <a href="events.html" class="dropdown-toggle" data-toggle="dropdown">Events</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="trade-missions.html">Trade Missions</a></li>
+                              <li><a href="training-programs.html">Training Programs</a></li>
+                              <li><a href="webinars.html">Webinars</a></li>
+                              <li><a href="discover-global-markets.html">Discover Global Markets</a></li>
+                              <li><a href="search-all-events.html">Search All Events</a></li>
+                              <li><a href="trade-shows.html">Trade Shows</a></li>
+                            </ul>
+                          </li>
+
+                          <li class="dropdown">
+                            <a href="contacts.html" class="dropdown-toggle" data-toggle="dropdown">Contacts</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="advocacy-program.html">Advocacy Program</a></li>
+                              <li><a href="domestic-offices.html">Domestic Offices</a></li>
+                              <li><a href="international-offices.html">International Offices</a></li>
+                            </ul>
+                          </li>
+
+                          <li class="dropdown">
+                            <a href="services.html" class="dropdown-toggle" data-toggle="dropdown">Services</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="for-exporters.html">For Exporters</a></li>
+                              <li><a href="trade-agreements-compliance-program.html">Trade Agreements Compliance (TAC) Program</a></li>
+                              <li><a href="commercial-service.html">Commercial Service (CS)</a></li>
+                              <div class="divider"></div>
+                              <li><a href="trade-promotion-programs.html">Trade Promotion Programs</a></li>
+                              <li><a href="initiatives.html">Initiatives (DBIA, NEI/NEXT, Look South, etc.)</a></li>
+                              <li><a href="strategic-partnership-program.html">Strategic Partnership Program</a></li>
+                              <li><a href="trade-fair-certification.html">Trade Fair Certification</a></li>
+                              <li><a href="certified-trade-mission-information.html">Certified Trade Mission Information</a></li>
+                              <li><a href="international-buyer-programs.html">International Buyer Programs</a></li>
+                              <li><a href="market-development-cooperator-program.html">Market Development Cooperator Program</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+
+                    </div>
+                  </nav>
+                  <!-- navbar end -->
+
+                </div>
+                <!-- main-navigation end -->
+
+              </div>
+              <!-- header-right end -->
+
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- header end -->
     <section id="main" class="container">
     </section>
-    <footer class="footer">
-      <div class="container">
-        <p class="text-muted text-center">
-          Export.gov is an official site of the U.S. Government
-        </p>
-        <p class="text-muted text-center">
-          <a href="https://help.export.gov/ics/support/ticketnewwizard.asp?style=classic&feedback=true">Submit Feedback</a> |
-          <a href="#">Contact Us</a> |
-          <a href="#">Privacy Policy</a> |
-          <a href="#">Disclaimer</a> |
-          <a href="#">About Us</a> |
-          <a href="http://www.usa.gov">USA.gov</a> |
-          <a href="http://www.osec.doc.gov/omo/FOIA/FOIAWEBSITE.htm">FOIA</a> |
-          <a href="http://ocio.os.doc.gov/ITPolicyandPrograms/Information_Quality/index.htm">Information Quality</a> |
-          <a href="http://www.osec.doc.gov/ocr/nofear/nofear.htm">No Fear</a> |
-          <a href="http://www.adobe.com/products/acrobat/readstep2.html" target="_blank">Download Adobe Reader</a>
-        </p>
-      </div>
+    <!-- footer start -->
+      <!-- ================ -->
+      <footer id="footer" class="light">
+
+        <!-- .footer start -->
+        <!-- ================ -->
+        <div class="footer">
+          <div class="container">
+            <div class="row">
+
+              <div class="col-sm-6 col-md-2">
+                <div class="footer-content">
+                  <h5><a href="export-basics.html">Export Basics</a></h5>
+                  <nav>
+                    <ul class="nav nav-pills nav-stacked">
+                              <li><a href="export-planning.html">Export Planning</a></li>
+                              <li><a href="international-sales-marketing.html">International Sales & Marketing</a></li>
+                              <li><a href="selling-online.html">Selling Online</a></li>
+                              <li><a href="find-business-partners.html">Find Business Partners</a></li>
+                              <li><a href="financing-payments.html">Financing & Payments</a></li>
+                              <li><a href="trade-agreements.html">Trade Agreements</a></li>
+                              <li><a href="documentation-shipping.html">Documentation & Shipping</a></li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+
+
+              <div class="col-sm-6 col-md-2">
+                <div class="footer-content">
+                  <h5><a href="market-intelligence.html" alt="Market Intelligence">Market Intelligence</a></h5>
+                  <nav>
+                    <ul class="nav nav-pills nav-stacked">
+                              <li><a href="market-intelligence-by-industry.html">By Industry</a></li>
+                              <li><a href="market-intelligence-by-country-region.html">By Country and Region</a></li>
+                              <li><a href="trade-opportunities.html">Trade Opportunities</a></li>
+                              <li><a href="http://apps.export.gov/#/articles">Search Market Intelligence</a></li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+
+
+              <div class="col-sm-6 col-md-2">
+                <div class="footer-content">
+                  <h5><a href="laws-regulations.html">Laws & Regulations</a></h5>
+                  <nav>
+                    <ul class="nav nav-pills nav-stacked">
+                              <li><a href="safe-harbor.html">Safe Harbor</a></li>
+                              <li><a href="export-regulations.html">Export Regulations</a></li>
+                              <li><a href="foreign-regulations.html">Foreign Regulations</a></li>
+                              <li><a href="intellectual-property-protection.html">Intellectual Property Protection</a></li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+
+
+              <div class="col-sm-6 col-md-2">
+                <div class="footer-content">
+                  <h5><a href="trade.barriers.html">Trade Barriers</a></h5>
+                  <nav>
+                    <ul class="nav nav-pills nav-stacked">
+                              <li><a href="foreign-anti-dumping-actions.html">Foreign Anti-Dumping Actions</a></li>
+                              <li><a href="foreign-countervailing-duty-actions.html">Foreign Countervailing Duty Actions</a></li>
+                              <li><a href="report-trade-barrier-hotline.html">Report a Trade Barrier Hotline</a></li>
+                              <li><a href="case-studies.html">Case Studies</a></li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+
+
+              <div class="col-sm-6 col-md-2">
+                <div class="footer-content">
+                  <h5><a href="events.html">Events</a></h5>
+                  <nav>
+                    <ul class="nav nav-pills nav-stacked">
+                              <li><a href="trade-missions.html">Trade Missions</a></li>
+                              <li><a href="training-programs.html">Training Programs</a></li>
+                              <li><a href="webinars.html">Webinars</a></li>
+                              <li><a href="discover-global-markets.html">Discover Global Markets</a></li>
+                              <li><a href="search-all-events.html">Search All Events</a></li>
+                              <li><a href="trade-shows.html">Trade Shows</a></li>
+                    </ul>
+                  </nav>
+                </div>
+                <div class="footer-content">
+                  <h5><a href="contacts.html">Contacts</a></h5>
+                  <nav>
+                    <ul class="nav nav-pills nav-stacked">
+                              <li><a href="advocacy-program.html">Advocacy Program</a></li>
+                              <li><a href="domestic-offices.html">Domestic Offices</a></li>
+                              <li><a href="international-offices.html">International Offices</a></li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-md-2">
+                <div class="footer-content">
+                  <h5><a href="services.html">Services</a></h5>
+                  <nav>
+                    <ul class="nav nav-pills nav-stacked">
+                              <li><a href="for-exporters.html">For Exporters</a></li>
+                              <li><a href="trade-agreements-compliance-program.html">Trade Agreements Compliance (TAC) Program</a></li>
+                              <li><a href="commercial-service.html">Commercial Service (CS)</a></li>
+                              <div class="divider"></div>
+                              <li><a href="trade-promotion-programs.html">Trade Promotion Programs</a></li>
+                              <li><a href="initiatives.html">Initiatives (DBIA, NEI/NEXT, Look South, etc.)</a></li>
+                              <li><a href="strategic-partnership-program.html">Strategic Partnership Program</a></li>
+                              <li><a href="trade-fair-certification.html">Trade Fair Certification</a></li>
+                              <li><a href="certified-trade-mission-information.html">Certified Trade Mission Information</a></li>
+                              <li><a href="international-buyer-programs.html">International Buyer Programs</a></li>
+                              <li><a href="market-development-cooperator-program.html">Market Development Cooperator Program</a></li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- .footer end -->
+
+        <!-- .subfooter start -->
+        <!-- ================ -->
+        <div class="subfooter">
+          <div class="container">
+
+
+                 <p class="footer2">
+    Export.gov is an official site of the U.S. Government<br><small>
+    <a href="https://help.export.gov/ics/support/ticketnewwizard.asp?style=classic&amp;feedback=true"  alt="Submit Feedback">Submit Feedback</a>&nbsp;&nbsp;|
+    <a href="#">Contact Us</a>&nbsp;&nbsp;|
+    <a href="#">Privacy Policy</a>&nbsp;&nbsp;|
+    <a href="#">Disclaimer</a>&nbsp;&nbsp;|
+    <a href="#">About Us</a>&nbsp;&nbsp;|
+    <a href="http://www.usa.gov">USA.gov</a>&nbsp;&nbsp;|
+    <!-- &nbsp;| -->
+    <a href="http://www.osec.doc.gov/omo/FOIA/FOIAWEBSITE.htm">FOIA</a>&nbsp;&nbsp;|
+    <a href="http://ocio.os.doc.gov/ITPolicyandPrograms/Information_Quality/index.htm">Information Quality</a>&nbsp;&nbsp;|
+    <a href="http://www.osec.doc.gov/ocr/nofear/nofear.htm">No Fear</a>&nbsp;&nbsp;|
+    <a href="#">Site Map</a>&nbsp;&nbsp;|
+    <a href="http://www.adobe.com/products/acrobat/readstep2.html" target="_blank">Download Adobe Reader</a></small>
+  </p>
+
+
+          </div>
+        </div>
+        <!-- .subfooter end -->
+
       </footer>
+      <!-- footer end -->
+    </div>
+    <!-- page-wrapper end -->
     <script src="js/bundle.js" type="text/javascript"></script>
     <script type='text/javascript' id="__bs_script__">
       //<![CDATA[document.write("<script async src='http://HOST:3002/browser-sync/browser-sync-client.2.9.11.js'><\/script>".replace("HOST", location.hostname));
