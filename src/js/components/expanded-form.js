@@ -3,7 +3,8 @@ var React = require('react');
 var Header       = require('./header');
 var KeywordInput = require('./keyword-input');
 var CountrySelect       = require('./country-select');
-var IndustrySelect = require('./industry-select')
+var IndustrySelect = require('./industry-select');
+var ExpirationDatePicker = require('./date-picker');
 
 module.exports = React.createClass({
   render: function() {
@@ -21,8 +22,12 @@ module.exports = React.createClass({
 
           <div className="col-md-4 category-input">
             <p className="text-muted">Search by Category</p>
-            <CountrySelect onChange={ this.props.onCountryChange }  placeholder="Select Country" items={ this.props.countries } />
-            <IndustrySelect onChange={ this.props.onIndustryChange } placeholder="Select Industry" items={ this.props.industries } />
+            <CountrySelect onChange={ this.props.onCountryChange }  placeholder="Select Country"  />
+            <IndustrySelect onChange={ this.props.onIndustryChange } placeholder="Select Industry"  />
+            <p className="text-muted">Expiration Date Start</p>
+            <ExpirationDatePicker onChange={ this.props.onExpirationDateStartChange } />
+            <p className="text-muted">Expiration Date End</p>
+            <ExpirationDatePicker onChange={ this.props.onExpirationDateEndChange } />
           </div>
 
         </div>

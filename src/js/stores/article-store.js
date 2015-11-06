@@ -5,12 +5,10 @@ var request = require('axios');
 var Dispatcher  = require('../dispatcher/dispatcher');
 var ActionTypes = require('../constants/constants').ActionTypes;
 var Store       = require('./store');
-//var parser      = require('../utils/aggregation-parser');
 
 var ENDPOINT = 'https://api.govwizely.com/market_research_library/search?api_key=0ooVzDG3pxt0azCL9uUBMYLS';
 
 var _articles     = {},
-    _aggregations = {},
     _metadata     = {},
     _query        = {};
 
@@ -20,14 +18,6 @@ var _setMetadata = function(_total, _offset) {
 
 var _setArticles = function(articles) {
   _articles = articles;
-};
-
-var _setAggregations = function(aggregations) {
-  _aggregations.countries  = _.reduce(aggregations.countries, function(results, country, key) {
-    results[country.key] = country.key;
-    return results;
-  }, {});
-  _aggregations.industries = parser.parseAsTree(aggregations.industries);
 };
 
 var _setQuery = function(query) {
@@ -44,10 +34,6 @@ ArticleStore.prototype = assign({}, Store.prototype, {
     return _.clone(_articles);
   },
 
-  getAggregations: function() {
-    return _.clone(_aggregations);
-  },
-
   getMetadata: function() {
     return _.clone(_metadata);
   },
@@ -59,17 +45,33 @@ ArticleStore.prototype = assign({}, Store.prototype, {
   __onDispatch: function(action) {
     switch(action.type) {
     case ActionTypes.SEARCH:
-      if (_.isEmpty(action.query)) return null;
 
       _setQuery(action.query);
+
+      
+      var query_params = {};
+      for(var propertyName in _query){
+        query_params[propertyName] = _query[propertyName];
+      }
+
+      if(query_params.expiration_date_start && query_params.expiration_date_end){
+        query_params.expiration_date = query_params.expiration_date_start + " TO " + query_params.expiration_date_end;
+        delete query_params.expiration_date_start;
+        delete query_params.expiration_date_end;
+      }
+      
+      //console.log(String(query_params));
+      console.log("_query:  " + JSON.stringify(_query));
+      console.log("query_params:  " + JSON.stringify(query_params));
+
       return request
         .get(ENDPOINT, {
-          params: _query
+          params: query_params
+          //params: _query
         })
         .then(function(response) {
           _setArticles(response.data.results);
           _setMetadata(response.data.total, response.data.offset);
-          //_setAggregations(response.data.aggregations);
 
           this.__emitChange();
         }.bind(this))

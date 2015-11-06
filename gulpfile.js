@@ -125,7 +125,8 @@ var js = {
     log.init('Building js');
     return js.b.bundle()
       .on('error', function(error) {
-        log.error(error);
+        console.log(error);
+        //this.emit('end');
       })
       .pipe(source('js/bundle.js'))
       .pipe(buffer())

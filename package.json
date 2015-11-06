@@ -1,22 +1,20 @@
 {
-  "name": "backbone-explorer",
+  "name": "mrl-search",
   "version": "0.0.0",
-  "description": "Explorer",
+  "description": "MRL Search",
   "main": "main.js",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/GovWizely/backbone-search-app.git"
+    "url": "git+ssh://git@github.com/GovWizely/mrl-search.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/GovWizely/backbone-search-app/issues"
+    "url": "https://github.com/GovWizely/mrl-search/issues"
   },
-  "homepage": "https://github.com/GovWizely/backbone-search-app#readme",
+  "homepage": "https://github.com/GovWizely/mrl-search#readme",
   "dependencies": {
     "axios": "^0.7.0",
-    "backbone": "^1.2.3",
-    "backbone-react-component": "git+ssh://git@github.com/magalhas/backbone-react-component.git",
     "es6-promise": "^3.0.2",
     "flux": "^2.1.1",
     "history": "^1.12.6",
@@ -25,6 +23,8 @@
     "lodash": "^3.10.1",
     "object-assign": "^4.0.1",
     "react": "^0.14.0",
+    "react-date-picker": "^2.7.1",
+    "react-datepicker": "^0.15.2",
     "react-dom": "^0.14.0",
     "react-router": "^1.0.0-rc3",
     "react-select": "^0.8.0",

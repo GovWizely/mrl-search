@@ -12,7 +12,7 @@ module.exports = React.createClass({
     return (
       <header className={ className }>
         <a href="#" onClick={ this.props.onClick }>
-          Find Market Intelligence <span className="phase">beta</span>
+          Search Market Research Library
         </a>
       </header>
     );

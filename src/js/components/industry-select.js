@@ -14,6 +14,7 @@ module.exports = React.createClass({
   componentWillMount: function() {
     IndustryStore.getIndustries(function(industries) {
       this.setState({ industries: industries });
+      this.setState({ values: this.props.values });
       this.setState({ isLoading : false });
     }.bind(this));
   },
@@ -27,12 +28,9 @@ module.exports = React.createClass({
       this.props.onChange(values);
     }
   },
-  options: function() {
-    return this.state.industries;
-  },
   render: function() {
     return (
-      <Select isLoading={ this.state.isLoading } name="industries" multi={ true } placeholder="Search Industries" options={ this.options() } onChange={ this.onChange } value={ this.state.values } />
+      <Select isLoading={ this.state.isLoading } name="industries" multi={ true } placeholder="Search Industries" options={ this.state.industries } onChange={ this.onChange } value={ this.state.values } />
     );
   }
 });

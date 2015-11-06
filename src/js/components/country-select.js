@@ -15,7 +15,7 @@ module.exports = React.createClass({
   componentWillMount: function() {
     CountryStore.getCountries(function(countries) {
       this.setState({ countries: countries });
-
+      this.setState({ values: this.props.values });
       this.setState({ isLoading : false });
     }.bind(this));
   },
@@ -29,12 +29,9 @@ module.exports = React.createClass({
       this.props.onChange(values);
     }
   },
-  options: function() {
-    return this.state.countries;
-  },
   render: function() {
     return (
-      <Select isLoading={ this.state.isLoading } name="countries" multi={ true } placeholder="Search Countries" options={ this.options() } onChange={ this.onChange } value={ this.state.values } />
+      <Select isLoading={ this.state.isLoading } name="countries" multi={ true } placeholder="Search Countries" options={ this.state.countries } onChange={ this.onChange } value={ this.state.values } />
     );
   }
 });
