@@ -9,7 +9,7 @@ var Route         = require('react-router').Route;
 var IndexView  = require('./js/components/index-view');
 var ResultView = require('./js/components/result-view');
 
-const history = createHistory();
+var history;
 if (process.env.NODE_ENV === 'production') {
   history = useBasename(createHistory)({
     basename: 'mrl-search'
