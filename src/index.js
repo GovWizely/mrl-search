@@ -10,10 +10,18 @@ var IndexView  = require('./js/components/index-view');
 var ResultView = require('./js/components/result-view');
 
 const history = createHistory();
+if (process.env.NODE_ENV === 'production') {
+  history = useBasename(createHistory)({
+    basename: 'mrl-search'
+  });
+} else {
+  history = createHistory();
+}
 
 const routes = [
   { path: "/", component: IndexView },
-  { path: "/search", component: ResultView }
+  { path: "/search", component: ResultView },
+  { path: "*", component: IndexView }
 ];
 
 ReactDOM.render((
