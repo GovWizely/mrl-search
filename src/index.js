@@ -1,7 +1,7 @@
 var React         = require('react');
 var ReactDOM      = require('react-dom');
 var useBasename   = require('history').useBasename;
-var createHistory = require('history').createHistory;
+var createHistory = require('history').createHashHistory;
 var Router        = require('react-router').Router;
 var Route         = require('react-router').Route;
 
