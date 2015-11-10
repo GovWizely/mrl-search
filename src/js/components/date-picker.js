@@ -7,27 +7,25 @@ module.exports = React.createClass({
 
   getInitialState: function() {
     return {
-      startDate: moment(),
-      isLoading: true
+      startDate: ''
     };
   },
   componentWillMount: function() {
     this.setState({ startDate: this.props.date });
-    this.setState({ isLoading : false });
   },
 
   onChange: function(date) {
-    this.setState({
-      startDate: date
-    });
+    this.setState({ startDate: date });
+    if ((typeof this.props.onChange) === 'function') {
+      this.props.onChange(date);
+    }
   },
 
   render: function() {
-    return <DatePicker
-        isLoading={ this.state.isLoading }
-        selected={ this.state.startDate }
-        onChange={ this.onChange } />;
+    return( 
+      <div className={ 'input-group' }>
+        <DatePicker className={ 'form-control' } selected={ this.state.startDate } onChange={ this.onChange } />
+      </div>
+    );
   }
 });
-
-//dateFormat: "YYYY-MM-DD"

@@ -11,11 +11,7 @@ var ArticleActor = require('../actors/article-actor');
 module.exports = React.createClass({
   mixins: [ History ],
   componentWillMount: function() {
-    if (_.isEmpty(this.props.location.query)) {
-      this.history.pushState(null, '/');
-    } else {
-      ArticleActor.search(this.props.location.query);
-    }
+    ArticleActor.search(this.props.location.query);
   },
   componentWillReceiveProps: function(nextProps) {
     if (nextProps.location.query !== this.props.location.query) {

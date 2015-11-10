@@ -9,6 +9,6 @@ module.exports = React.createClass({
     e.preventDefault();
   },
   render: function() {
-    return <Form onSubmit={ this.handleSubmit } expanded={ true } history={ this.history } />;
+    return <Form expanded={ true } onSubmit={ this.handleSubmit } history={ this.history } />;
   }
 });

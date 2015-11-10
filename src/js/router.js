@@ -30,7 +30,7 @@ module.exports = Backbone.Router.extend({
   },
 
   index: function() {
-    this.current = 'search-view';
+    this.current = 'index-view';
   },
   search: function(query) {
     this.current = 'result-view';

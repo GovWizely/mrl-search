@@ -10,7 +10,8 @@ var ENDPOINT = 'https://api.govwizely.com/market_research_library/search?api_key
 
 var _articles     = {},
     _metadata     = {},
-    _query        = {};
+    _query        = {},
+    _actual_query_params = {};
 
 var _setMetadata = function(_total, _offset) {
   _metadata = {total:_total, offset:_offset};
@@ -26,6 +27,16 @@ var _setQuery = function(query) {
 
 var ArticleStore = function(dispatcher) {
   Store.call(this, dispatcher);
+};
+
+var _setActualQuery = function(){
+  _actual_query_params = _.clone(_query);
+
+  if(_actual_query_params.expiration_date_start && _actual_query_params.expiration_date_end){
+    _actual_query_params.expiration_date = _actual_query_params.expiration_date_start + " TO " + _actual_query_params.expiration_date_end;
+    delete _actual_query_params.expiration_date_start;
+    delete _actual_query_params.expiration_date_end;
+  }
 };
 
 ArticleStore.prototype = assign({}, Store.prototype, {
@@ -47,27 +58,14 @@ ArticleStore.prototype = assign({}, Store.prototype, {
     case ActionTypes.SEARCH:
 
       _setQuery(action.query);
+      _setActualQuery();
 
-      
-      var query_params = {};
-      for(var propertyName in _query){
-        query_params[propertyName] = _query[propertyName];
-      }
-
-      if(query_params.expiration_date_start && query_params.expiration_date_end){
-        query_params.expiration_date = query_params.expiration_date_start + " TO " + query_params.expiration_date_end;
-        delete query_params.expiration_date_start;
-        delete query_params.expiration_date_end;
-      }
-      
-      //console.log(String(query_params));
       console.log("_query:  " + JSON.stringify(_query));
-      console.log("query_params:  " + JSON.stringify(query_params));
+      console.log("query_params:  " + JSON.stringify(_actual_query_params));
 
       return request
         .get(ENDPOINT, {
-          params: query_params
-          //params: _query
+          params: _actual_query_params
         })
         .then(function(response) {
           _setArticles(response.data.results);
@@ -81,7 +79,7 @@ ArticleStore.prototype = assign({}, Store.prototype, {
 
     case ActionTypes.PAGING:
       return request
-        .get(ENDPOINT, { params: assign({}, _query, { offset: 0 })})
+        .get(ENDPOINT, { params: assign({}, _actual_query_params, { offset: 0 })})
         .then(function(response) {
           _setArticles(response.data.results);
 

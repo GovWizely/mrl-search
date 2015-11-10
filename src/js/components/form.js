@@ -1,6 +1,7 @@
 var _     = require('lodash');
 var $     = require('jquery');
 var React = require('react');
+var moment = require('moment');
 
 var ExpandedForm     = require('./expanded-form');
 var CondensedForm    = require('./condensed-form');
@@ -17,24 +18,26 @@ module.exports = React.createClass({
     };
   },
   getInitialState: function() {
+    var expiration_date_start = ArticleStore.getQuery().expiration_date_start ? moment(ArticleStore.getQuery().expiration_date_start) : '' ;
+    var expiration_date_end = ArticleStore.getQuery().expiration_date_end ? moment(ArticleStore.getQuery().expiration_date_end) : '' ;
     return {
       keyword               : ArticleStore.getQuery().q          || '',
       countries             : ArticleStore.getQuery().countries  || '',
       industries            : ArticleStore.getQuery().industries || '',
-      expiration_date_start : ArticleStore.getQuery().expiration_date_start || '',
-      expiration_date_end   : ArticleStore.getQuery().expiration_date_end || ''
+      expiration_date_start : expiration_date_start,
+      expiration_date_end   : expiration_date_end
     };
   },
   handleSubmit: function(e) {
+    var expiration_date_start = (this.state.expiration_date_start && this.state.expiration_date_end) ? this.state.expiration_date_start.format('YYYY-MM-DD') : '' ;
+    var expiration_date_end = (this.state.expiration_date_start && this.state.expiration_date_end) ? this.state.expiration_date_end.format('YYYY-MM-DD') : '' ;
     var query = _.pick({
       q: this.state.keyword,
       countries: this.state.countries,
       industries: this.state.industries,
-      expiration_date_start: this.state.expiration_date_start,
-      expiration_date_end: this.state.expiration_date_end
+      expiration_date_start: expiration_date_start,
+      expiration_date_end: expiration_date_end
     }, _.identity);
-    console.log("Start:  " + this.state.expiration_date_start);
-    console.log("End:  " + this.state.expiration_date_end);
     this.props.history.pushState(
       query, '/search', query);
   },
@@ -42,18 +45,15 @@ module.exports = React.createClass({
     this.setState({ keyword: e.target.value });
   },
   handleCountryChange: function(values) {
-    console.log("Country changed!");
     this.setState({ countries: values });
   },
   handleIndustryChange: function(values) {
     this.setState({ industries: values });
   },
   handleExpirationDateStartChange: function(date) {
-    console.log("Start changed!");
     this.setState({ expiration_date_start: date });
   },
   handleExpirationDateEndChange: function(date) {
-    console.log("End changed!");
     this.setState({ expiration_date_end: date });
   },
 
