@@ -80,17 +80,31 @@ nav.navbar {
   }
 }
 
-.keyword-input {
-  border-right: 1px solid #eee;
-  height: 300px;
-}
+.keyword-input, .category-input, .date-input, .search-button-col {
+  padding-bottom: 10px;
+  padding-left: 10px;
+ }
 
-.category-input {
-  .Select {
-    margin-top: 12px;
-    margin-bottom: 14px;
-  }
-}
+ .row{
+  padding-left: 10px;
+ }
+
+ .expanded-bottom-row{
+  margin-bottom: 100px;
+ }
+
+ .expanded-row{
+  width: 620px;
+  margin-right: auto;
+  margin-left: auto;
+ }
+
+ .search-button-col{
+  padding-top: 10px;
+ }
+
+.category-input .Select {
+ }
 
 #filters {
   border-right: 1px solid #eee;
