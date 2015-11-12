@@ -126,7 +126,6 @@ var js = {
     return js.b.bundle()
       .on('error', function(error) {
         console.log(error);
-        //this.emit('end');
       })
       .pipe(source('js/bundle.js'))
       .pipe(buffer())

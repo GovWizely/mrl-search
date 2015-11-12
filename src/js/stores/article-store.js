@@ -60,9 +60,6 @@ ArticleStore.prototype = assign({}, Store.prototype, {
       _setQuery(action.query);
       _setActualQuery();
 
-      console.log("_query:  " + JSON.stringify(_query));
-      console.log("query_params:  " + JSON.stringify(_actual_query_params));
-
       return request
         .get(ENDPOINT, {
           params: _actual_query_params

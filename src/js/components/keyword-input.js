@@ -16,7 +16,6 @@ module.exports = React.createClass({
     var containerClass = 'input-group col-md-12';
     if (this.props.expanded) {
       inputClass     = inputClass.concat(' input-lg');
-      containerClass = containerClass.concat(' col-md-12');
     }
     return (
       <div className={ containerClass }>
