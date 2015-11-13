@@ -7,6 +7,7 @@ var IndustrySelect = require('./industry-select');
 var ExpirationDatePicker = require('./date-picker');
 
 module.exports = React.createClass({
+  displayName: 'CondensedForm',
   render: function() {
     return (
       <div>

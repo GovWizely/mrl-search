@@ -28,6 +28,9 @@ module.exports = React.createClass({
       this.props.onChange(values);
     }
   },
+  options: function() {
+    return this.state.industries;
+  },
   render: function() {
     return (
       <Select isLoading={ this.state.isLoading } name="industries" multi={ true } placeholder="Search Industries" options={ this.state.industries } onChange={ this.onChange } value={ this.state.values } />
