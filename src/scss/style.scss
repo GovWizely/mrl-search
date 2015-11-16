@@ -37,8 +37,8 @@ nav.navbar {
 
 .header {
   @extend h4;
-  font-size: 45px;
-  font-weight: 700;
+  font-size: 35px;
+  font-weight: 600;
 
   a {
     color: $header-color;
@@ -147,4 +147,8 @@ nav.navbar {
 
 #query-field{
   box-sizing: content-box;
+}
+
+#search-button{
+  background-color: #0078E7;
 }
