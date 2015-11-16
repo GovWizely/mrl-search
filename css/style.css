@@ -8490,4 +8490,6 @@ nav.navbar {
   box-sizing: content-box; }
 
 #search-button {
-  background-color: #0078E7; }
+  background-color: #0078E7;
+  border: none;
+  border-radius: 5px; }
