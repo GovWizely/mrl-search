@@ -8420,6 +8420,9 @@ nav.navbar {
     text-decoration: none; }
     .header a:hover {
       color: #32404e; }
+  .header a:link {
+    font-size: inherit;
+    font-weight: inherit; }
   .header .phase {
     color: #4cae4c;
     font-size: 20px; }
@@ -8461,17 +8464,6 @@ nav.navbar {
 .search-button-col {
   padding-top: 10px; }
 
-#filters {
-  border-right: 1px solid #eee;
-  width: 100%; }
-  #filters section {
-    width: 95%;
-    height: 280px;
-    border-bottom: 1px solid #eee; }
-    #filters section .overflow {
-      height: 85%;
-      overflow-y: scroll; }
-
 .articles {
   padding-bottom: 64px; }
   .articles .article .title {
@@ -8484,3 +8476,15 @@ nav.navbar {
       color: #4cae4c; }
   .articles .article .snippet {
     font: normal normal 1.125em 'Lato', sans-serif; }
+
+#search-button {
+  float: right; }
+
+.container {
+  width: 100%; }
+
+.pagination a:link {
+  font-family: FontAwesome; }
+
+#query-field {
+  box-sizing: content-box; }
