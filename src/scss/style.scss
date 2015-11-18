@@ -37,8 +37,8 @@ nav.navbar {
 
 .header {
   @extend h4;
-  font-size: 45px;
-  font-weight: 700;
+  font-size: 35px;
+  font-weight: 600;
 
   a {
     color: $header-color;
@@ -46,6 +46,11 @@ nav.navbar {
     &:hover {
       color: $header-color;
     }
+  }
+
+  a:link{
+    font-size: inherit;
+    font-weight: inherit;
   }
 
   .phase {
@@ -107,21 +112,6 @@ nav.navbar {
 .category-input .Select {
  }
 
-#filters {
-  border-right: 1px solid #eee;
-  width: 100%;
-  section {
-    width: 95%;
-    height: 280px;
-    border-bottom: 1px solid #eee;
-
-    .overflow {
-      height: 85%;
-      overflow-y: scroll;
-    }
-  }
-}
-
 .articles {
   padding-bottom: 64px;
   .article {
@@ -141,4 +131,26 @@ nav.navbar {
       font: normal normal 1.125em 'Lato', sans-serif;
     }
   }
+}
+
+#search-button {
+  float: right;
+}
+
+.container {
+  width: 100%;
+}
+
+.pagination a:link{
+  font-family: FontAwesome;
+}
+
+#query-field{
+  box-sizing: content-box;
+}
+
+#search-button{
+  background-color: #0078E7;
+  border: none; 
+  border-radius: 5px;
 }

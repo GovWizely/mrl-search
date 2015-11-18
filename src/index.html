@@ -1,49 +1,336 @@
-<!doctype html>
-<html class="no-js" lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script type="text/javascript" src="http://www.export.gov/build/websites/EG_MAIN/sitenavigationfunctions.js" language="javascript" id="SSNavigationFunctionsScript"></script>
+  <script type="text/javascript" src="http://www.export.gov/build/websites/EG_MAIN/sitenavigation.js" language="javascript" id="SSNavigationScript"></script>
+
     <title>MRL Search</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  </head>
-  <body>
-    <nav class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <div class="nav-header">
-          <a class="navbar-brand" href="#">
-            <img src="images/logo.png" alt="Logo" width="200" />
-          </a>
-        </div>
-      </div>
-    </nav>
+
+  <link rel="stylesheet" href="http://www.export.gov/build/fragments/fl_eg2_stylesheets/eg2_master.css" type="text/css"></link>
+  <link rel="stylesheet" href="http://www.export.gov/build/fragments/fl_eg2_stylesheets/print.css" type="text/css" media="print"></link>
+  <script type="text/javascript" src="http://www.export.gov/build/fragments/fl_eg2_stylesheets/jquery-1.3.2.min.js"></script>
+   <!--[if IE 6]>
+    <link rel="stylesheet" type="text/css" media="all" href="http://www.export.gov/build/fragments/fl_eg2_stylesheets/eg2_master_ie6.css" />
+    <script type="text/javascript" src="http://www.export.gov/build/fragments/fl_eg2_stylesheets/eg2iefix.js"></script>
+    <![endif]-->
+  <link rel="stylesheet" href="http://www.export.gov/build/fragments/fl_eg_master_stylesheets/exp_master.css" type="text/css"></link>
+  <link rel="stylesheet" href="http://www.export.gov/build/fragments/fl_eg_lnavmulti/fl_eg_lnavmulti.css" type="text/css"></link>
+  <script src="http://www.export.gov/build/fragments/fl_eg_lnavmulti/fl_eg_lnavmulti.js"></script>
+  <script src="http://www.export.gov/build/fragments/fl_eg2_printemail/email.js" language="javascript"></script>
+  <link rel="stylesheet" href="http://www.export.gov/build/fragments/fl_eg2_printemail/print.css" type="text/css" media="print">
+  <link rel="stylesheet" href="http://www.export.gov/build/fragments/fl_eg_outsidelinks/colorbox.css" type="text/css"></link>
+  <script src="http://www.export.gov/build/fragments/fl_eg_outsidelinks/colorbox-min.js" language="javascript"></script>
+  <script src="http://www.export.gov/build/fragments/fl_eg_outsidelinks/emailSpam.js" language="javascript"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script type="text/javascript">
+    function initPage() {
+      var lnk = document.links;
+      for(var i=0; i < lnk.length; i++){
+        if (lnk[i].href && lnk[i].href.indexOf('http') == 0 && (!lnk[i].href.match(/(\.gov|buyusainfo\.net|unzco\.com|cmpinc\.net|exportyellowpages\.com|globalspeak\.com|score\.org|leagueofgreenembassies\.org)/i))) {
+           var urldns = window.location.hostname;
+           var buyusaIndx = urldns.indexOf("buyusa");
+           if (buyusaIndx == -1){
+              //alert(lnk[i].href);
+              $(lnk[i]).click(function(){
+
+                $("#outsideLink").attr("href", $(this).attr("href"));
+                $("#outsideLink").text($(this).attr("href"));
+
+                $.colorbox({href:"#outside_disclaimer", inline:true, width:"50%"});
+                return false;  //prevent automatice redirect
+              });
+            }
+            else {
+              $(lnk[i]).click(function(){
+
+                $("#buyusa_outsideLink").attr("href", $(this).attr("href"));
+                $("#buyusa_outsideLink").text($(this).attr("href"));
+
+
+                $.colorbox({href:"#buyusa_outside_disclaimer", inline:true, width:"50%"});
+                return false;  //prevent automatice redirect
+              });
+
+            }
+
+        }
+      }
+    }
+
+    /**
+     * Colorbox timeout functionality
+     */
+    jQuery(function($) {
+
+      var timer;
+      var timeout = 5; // seconds
+
+      // When displaying a colorbox, set a timer
+      // to close it after a set amount of time
+      $(document).bind('cbox_open', function() {
+        timer = setTimeout(function() {
+          console.log('timeout');
+          $.colorbox.close();
+           var urldns = window.location.hostname;
+      var buyusaIndx = urldns.indexOf("buyusa");
+      if (buyusaIndx == -1){
+            window.location.href = $("#outsideLink").attr("href");
+          }
+          else{
+            window.location.href = $("#buyusa_outsideLink").attr("href");
+          }
+        }, timeout * 1000 /* ms per second */);
+      });
+
+      // If the colorbox is closed before the timeout,
+      // clear the timeout so it never fires
+      $(document).bind('cbox_closed', function() {
+        clearTimeout(timer);
+      });
+
+    });
+
+    if (window.addEventListener) window.addEventListener('load', initPage, false);
+    else if (window.attachEvent) window.attachEvent('onload', initPage);
+
+  </script>
+</head>
+
+
+<body>
+  <div id="framepagewidth">
+    <div id="frameheader">
+
+<!--SS_BEGIN_SNIPPET(fragment2,Presentation)-->
+    <form name="Search Export.Gov" action="http://search.export.gov/search" id="search_form" method="get">
+<div id="banner">
+  <div class="eglogo"><a href="http://www.export.gov/index.asp"><img alt="Export.gov Logo - Helping U.S. Companies Export" src="http://www.export.gov/build/fragments/fl_eg2_header_topnav/eg_logo.gif"></a></div>
+    <div class="langbtn"></div>
+    <div class="egaccount"><a href="http://www.export.gov/about/eg_main_016804.asp">Register</a> <font color="#FFFFFF">|</font> <a href="http://www.export.gov/articles/eg_main_018977.asp">Manage Account</a></div>
+    <div class="searchbox2">
+<input type="hidden" name="affiliate" value="47593d2fa" />
+<input type="text" name="query" id="query-field" autocomplete="off" class="usagov-search-autocomplete ui-autocomplete-input ui-corner-all searchbox" onfocus="value=''" value="Search Our Site" />
+  </div>
+  <div class="srchbtn">
+  <input name="submit" type="image" alt="Click to Search Our Site" src="http://www.export.gov/build/fragments/fl_eg2_header_topnav/searchbtn.jpg" id="submit" />
+
+  </div>
+  <ul id="topnav" class="clearfix">
+    <li id="nav-home" class="first-level">
+          <div class="first-level"><a href="http://www.export.gov/index.asp" class="first-level"><span>Export.gov Home</span></a></div>
+    </li>
+
+    <li id="nav-opportunities" class="first-level">
+      <a href="http://www.export.gov/opportunities/index.asp" class="first-level"><span>Opportunities</span></a>
+        <div class="topnav-dd-outer"><div class="topnav-dd-inner clearfix">
+          <ul>
+
+          <li><a href="http://www.export.gov/industry/index.asp">By Industry</a></li>
+          <li><a href="http://export.gov/worldwide_us/index.asp">By Country</a></li>
+          <li><a href="http://www.export.gov/mrktresearch/index.asp">Market Research</a></li>
+          <li><a href="http://www.export.gov/tradeevents/index.asp">Trade Events</a></li>
+          <li><a href="http://www.export.gov/tradeleads/index.asp">Trade Leads</a></li>
+          <li><a href="http://www.export.gov/FTA/index.asp">Free Trade Agreements</a></li>
+        </ul>
+      </div></div><!--/ .topnav-dd-outer, .topnav-dd-inner -->
+    </li>
+    <li id="nav-solutions" class="first-level">
+      <a href="http://www.export.gov/solutions/index.asp" class="first-level"><span>Solutions</span></a>
+      <div class="topnav-dd-outer"><div class="topnav-dd-inner clearfix">
+          <ul>
+
+          <li><a href="http://www.export.gov/salesandmarketing/index.asp">International Sales &#38; Marketing</a></li>
+          <li><a href="http://www.export.gov/finance/index.asp">International Financing</a></li>
+          <li><a href="http://www.export.gov/logistics/index.asp">International Logistics</a></li>
+          <li><a href="http://www.export.gov/regulation/index.asp">Licenses &#38; Regulations</a></li>
+          <li><a href="http://www.export.gov/tradedata/index.asp">Trade Data &#38; Analysis</a></li>
+          <li><a href="http://www.export.gov/tradeproblems/index.asp">Trade Problems</a></li>
+        </ul>
+      </div></div>
+    </li>
+    <li id="nav-locations" class="first-level">
+      <a href="http://www.export.gov/locations/index.asp" class="first-level"><span>Locations</span></a>
+      <div class="topnav-dd-outer"><div class="topnav-dd-inner clearfix">
+          <ul>
+
+          <li><a href="http://www.export.gov/usoffices/index.asp">Domestic Offices</a></li>
+          <li><a href="http://www.export.gov/worldwide_us/index.asp">International Offices</a></li>
+        </ul>
+      </div></div>
+    </li>
+    <li id="nav-faq" class="first-level">
+      <a href="http://www.export.gov/faq/index.asp" class="first-level"><span>FAQ</span></a>
+    </li>
+      <li id="nav-blog" class="first-level">
+      <a href="http://www.export.gov/blog/index.asp" class="first-level"><span>Blog</span></a>
+    </li>
+    <li id="nav-social" class="first-level">
+      <a href="http://www.export.gov/socialmedia/index.asp" class="first-level"><span>Connect</span></a>
+    </li>
+  </ul>
+</div>
+</form>
+
+
+
+    </div><!--Start of body -->
+
+    <div id="framethreecols">
+<div id="printemail">
+
+    <div class="bc">
+
+
+
+    </div>
+<img class="logo" src="http://www.export.gov/build/fragments/fl_eg2_printemail/exportgov_logo.jpg">
+
+
+<div class="pe">
+<a onclick=" window.print(); return false" href="">Print</a>
+</div>
+
+
+
+
+</div>
+
+
+
+
+      <div id="framemaincol3">
+        <div class="centerallcontent">
+
     <section id="main" class="container">
     </section>
-    <footer class="footer">
-      <div class="container">
-        <p class="text-muted text-center">
-          Export.gov is an official site of the U.S. Government
-        </p>
-        <p class="text-muted text-center">
-          <a href="https://help.export.gov/ics/support/ticketnewwizard.asp?style=classic&feedback=true">Submit Feedback</a> |
-          <a href="#">Contact Us</a> |
-          <a href="#">Privacy Policy</a> |
-          <a href="#">Disclaimer</a> |
-          <a href="#">About Us</a> |
-          <a href="http://www.usa.gov">USA.gov</a> |
-          <a href="http://www.osec.doc.gov/omo/FOIA/FOIAWEBSITE.htm">FOIA</a> |
-          <a href="http://ocio.os.doc.gov/ITPolicyandPrograms/Information_Quality/index.htm">Information Quality</a> |
-          <a href="http://www.osec.doc.gov/ocr/nofear/nofear.htm">No Fear</a> |
-          <a href="http://www.adobe.com/products/acrobat/readstep2.html" target="_blank">Download Adobe Reader</a>
-        </p>
+
+        </div>
       </div>
-      </footer>
+
+
+
+      <div id="framefooter">
+
+
+       <div id="botprint">
+        <img class="bpline1" alt="" src="http://www.export.gov/build/fragments/fl_eg2_footer/lrgfadeline.jpg">
+          <div id="botprintlinks"> <ul class="ul">
+          <li><a onclick=" window.print(); return false" href="">Print</a>
+                            </li>
+
+          </ul>
+        </div>
+        <img class="bpline2" alt="" src="http://www.export.gov/build/fragments/fl_eg2_footer/lrgfadeline.jpg">
+      </div>
+      <div id="footer">
+      <div id="footertopnav">
+        <div class="col">
+        <a href="http://www.export.gov/index.asp" class="h4">Home</a><br><br>
+        <a href="http://www.export.gov/opportunities/index.asp" class="h4">Opportunities</a>
+          <ul class="ul">
+
+            <li><a href="http://www.export.gov/industry/index.asp">By Industry</a></li>
+            <li>
+<a href="http://export.gov/worldwide_us/index.asp">By Country</a></li>
+            <li>
+<a href="http://www.export.gov/mrktresearch/index.asp">Market Research</a></li>
+            <li>
+<a href="http://www.export.gov/tradeevents/index.asp">Trade Events</a></li>
+            <li>
+<a href="http://www.export.gov/tradeleads/index.asp">Trade Leads</a></li>
+            <li>
+<a href="http://www.export.gov/FTA/index.asp">Free Trade Agreements</a></li>
+          </ul>
+        </div>
+        <div class="col"><a href="http://www.export.gov/solutions/index.asp" class="h4">Solutions</a>
+          <ul class="ul">
+
+            <li><a href="http://www.export.gov/salesandmarketing/index.asp">International Sales &#38; Marketing</a></li>
+            <li>
+<a href="http://www.export.gov/finance/index.asp">International Financing</a></li>
+            <li>
+<a href="http://www.export.gov/logistics/index.asp">International Logistics</a></li>
+            <li>
+<a href="http://www.export.gov/regulation/index.asp">Licenses &#38; Regulations</a></li>
+            <li>
+<a href="http://www.export.gov/tradedata/index.asp">Trade Data &#38; Analysis</a></li>
+            <li>
+<a href="http://www.export.gov/tradeproblems/index.asp">Trade Problems</a></li>
+          </ul>
+        </div>
+        <div class="col">
+          <a href="http://www.export.gov/locations/index.asp" class="h4">Locations</a>
+          <ul class="ul">
+
+            <li><a href="http://www.export.gov/usoffices/index.asp">Domestic Offices</a></li>
+            <li><a href="http://www.export.gov/worldwide_us/index.asp">International Offices</a></li>
+          </ul>
+          <a href="http://www.export.gov/faq/index.asp" class="h4">FAQ</a><br><br>
+          <a href="http://www.export.gov/blog/index.asp" class="h4">Blog</a><br><br>
+          <a href="http://www.export.gov/socialmedia/index.asp" class="h4">Connect</a><br><br>
+        </div>
+      </div>
+      <img class="footerline" alt="" src="http://www.export.gov/build/fragments/fl_eg2_footer/smlfadeline2.jpg">
+      <div id="footerbotnav"><ul class="ul">
+        <li><a href="javascript:feedback_page();">Submit Feedback</a>
+            |
+            <a href="http://www.export.gov/contactus/index.asp">Contact Us</a>
+            |
+          <a href="http://www.export.gov/socialmedia/index.asp">Social Media</a>
+            |
+          <a href="http://www.export.gov/about/eg_main_016803.asp">Privacy Policy</a>
+          |
+          <a href="http://www.export.gov/about/eg_main_016808.asp">FOIA</a>
+            |
+            <a href="http://www.export.gov/about/eg_main_016805.asp">Disclaimer</a>
+            |
+            <a href="http://www.export.gov/about/index.asp">About Us</a>
+            |
+            <a href="http://www.usa.gov">USA.gov</a>
+            |
+            <a href="http://www.export.gov/articles/eg_main_016980.asp">Site Map</a>
+            |
+                  <a href="http://get.adobe.com/reader/">Download Adobe PDF Reader</a></li>
+      </ul></div>
+    </div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+        <div style='display:none'>
+      <div id='outside_disclaimer' style='padding:10px; background:#fff;'>
+      <p><b>&nbsp; Notice to Visitors! </b></p>
+      <br>
+<p><b>&nbsp; The link you have chosen will take you to a non-U.S. Government website.</b> </p>
+<p>&nbsp; If the page <b>does not</b> appear in 5 seconds, please click this: <a href="http://www.export.gov/industry/index.asp#" id="outsideLink">outside web site</a></p>
+<p>&nbsp; Export.gov is managed by the International Trade Administration and
+external links are covered by its website &nbsp;<a href="http://trade.gov/endorse.asp">disclaimer statement</a>.</p>
+<br>
+      </div>
+
+      <div id='buyusa_outside_disclaimer' style='padding:10px; background:#fff;'>
+      <p><b>&nbsp; Notice to Visitors! </b></p>
+      <br>
+<p><b>&nbsp; The link you have chosen will take you to a non-U.S. Government website.</b> </p>
+<p>&nbsp; If the page <b>does not</b> appear in 5 seconds, please click this: <a href="http://www.export.gov/industry/index.asp#" id="buyusa_outsideLink">outside web site</a></p>
+<p>&nbsp; BuyUSA.gov is managed by the International Trade Administration and
+external links are covered by its website <a href="http://trade.gov/endorse.asp">disclaimer statement</a>.</p>
+<br>
+      </div>
+    </div>
+
     <script src="js/bundle.js" type="text/javascript"></script>
     <script type='text/javascript' id="__bs_script__">
       //<![CDATA[document.write("<script async src='http://HOST:3002/browser-sync/browser-sync-client.2.9.11.js'><\/script>".replace("HOST", location.hostname));
       //]]>
     </script>
-  </body>
+</body>
 </html>
+
