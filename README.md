@@ -46,11 +46,3 @@ To auto-run tests on file changes:
 ```
 
 If you'd like to run only one test file, adjust the `files` attribute in karma.conf.js.
-# backbone-search-app
-
-## setting up
-```sh
-  > npm install
-  > gulp setup
-  > gulp watch
-```
