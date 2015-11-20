@@ -6,7 +6,7 @@ var Dispatcher  = require('../dispatcher/dispatcher');
 var ActionTypes = require('../constants/constants').ActionTypes;
 var Store       = require('./store');
 
-var ENDPOINT = 'https://api.govwizely.com/market_research_library/search?api_key=0ooVzDG3pxt0azCL9uUBMYLS';
+var ENDPOINT = process.env.WEBSERVICES_URL + "api_key=" +  process.env.WEBSERVICES_API_KEY
 
 var _articles     = {},
     _metadata     = {},

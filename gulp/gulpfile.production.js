@@ -19,7 +19,9 @@ module.exports = function() {
       bundle: 'js/bundle.js'
     },
     envify: {
-      NODE_ENV: 'production'
+      NODE_ENV: 'production',
+      WEBSERVICES_URL: 'https://api.govwizely.com/market_research_library/search?',
+      WEBSERVICES_API_KEY: '9Fbtlor84df8F3UqaUfbImlz'
     }
   });
 

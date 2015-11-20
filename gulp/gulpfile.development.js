@@ -22,7 +22,9 @@ module.exports = function() {
       bundle: 'js/bundle.js'
     },
     envify: {
-      NODE_ENV: 'development'
+      NODE_ENV: 'development',
+      WEBSERVICES_URL: 'http://localhost:3000/market_research_library/search?',
+      WEBSERVICES_API_KEY: 'devkey' // Replace this with whatever local key works for you, if needed
     },
     karma: {
       conf: path.resolve(__dirname, '../karma.conf.js')
