@@ -1,5 +1,6 @@
 // enable bootstrap js component
 require('bootstrap');
+require('es6-promise').polyfill();
 
 var React         = require('react');
 var ReactDOM      = require('react-dom');
