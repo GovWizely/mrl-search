@@ -8,7 +8,7 @@ var Store       = require('./store');
 
 var ENDPOINT = process.env.WEBSERVICES_URL + "api_key=" +  process.env.WEBSERVICES_API_KEY
 
-var _articles     = {},
+var _articles     = [],
     _metadata     = {},
     _query        = {},
     _actual_query_params = {};
